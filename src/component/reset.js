@@ -125,7 +125,7 @@ export default function Reset() {
           className="login-text-fname"
           onChange={(event) => setConfirmPassword(event.target.value)}
           label="Confirm Password "
-          value={confirmPassword}
+          value={confirmpassword}
           variant="standard"
         />
 
