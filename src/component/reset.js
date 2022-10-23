@@ -117,7 +117,6 @@ const Reset = () => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
     const updatePassword = {
       password: password,
     };
@@ -127,6 +126,7 @@ const Reset = () => {
     } else {
       window.alert("Passwords does not match");
     }
+    e.preventDefault();
     fetch(
       `https://crm-node-app.herokuapp.com/register/resetpassword/${id}/${token}`,
       {
