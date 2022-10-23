@@ -36,8 +36,9 @@ export default function Forgot() {
               },
             })
               .then((data) => data.json())
+
               .then((data) => {
-                if (data.message == "success") {
+                if (data.message !== "success") {
                   window.alert(
                     "success!! Password reset link has been sent to your mail"
                   );
