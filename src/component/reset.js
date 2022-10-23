@@ -127,13 +127,16 @@ const Reset = () => {
       password: password,
     };
     console.log(updatePassword);
-    fetch(`https://crm-node-app.herokuapp.com/register/resetpassword/`, {
-      method: "POST",
-      body: JSON.stringify(updatePassword),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    fetch(
+      `https://crm-node-app.herokuapp.com/register/resetpassword/${id}/${token}`,
+      {
+        method: "POST",
+        body: JSON.stringify(updatePassword),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
       .then((data) => data.json())
       .then((data) => {
         if (data.message === "User not exists!!") {
