@@ -49,7 +49,7 @@ export default function Reset() {
               fetch(
                 "https://crm-node-app.herokuapp.com/register/resetpasswordconfirm",
                 {
-                  method: "PUT",
+                  method: "POST",
                   body: JSON.stringify(updatedPassword),
                   headers: {
                     "Content-Type": "application/json",
