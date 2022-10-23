@@ -123,6 +123,11 @@ const Reset = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (password === confirmPassword) {
+      handleSubmit();
+    } else {
+      window.alert("Passwords does not match");
+    }
     const updatePassword = {
       password: password,
     };
