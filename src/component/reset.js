@@ -182,7 +182,7 @@ const Reset = () => {
             <button
               type="submit"
               className="btn btn-primary"
-              onClick={passwordMatch}
+              onClick={handleSubmit}
             >
               Submit
             </button>
