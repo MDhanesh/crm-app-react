@@ -139,8 +139,8 @@ export default function Reset() {
               const updatedPassword = {
                 id: id,
                 token: token,
-                password: newPassword,
-                confirmpassword: confirmPassword,
+                password: password,
+                confirmpassword: confirmpassword,
               };
               fetch(
                 "https://crm-node-app.herokuapp.com/register/resetpasswordconfirm",
