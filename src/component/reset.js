@@ -79,8 +79,8 @@ export default function Reset() {
   // );
   const { id, token } = useParams();
   const navigate = useNavigate();
-  const [newPassword, setNewPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [password, setpassword] = useState("");
+  const [confirmpassword, setConfirmPassword] = useState("");
 
   return (
     <div>
@@ -114,9 +114,9 @@ export default function Reset() {
           required
           type="password"
           className="login-text-email"
-          onChange={(event) => setNewPassword(event.target.value)}
+          onChange={(event) => setpassword(event.target.value)}
           label="New Password"
-          value={newPassword}
+          value={password}
           variant="standard"
         />
         <TextField
@@ -133,7 +133,7 @@ export default function Reset() {
           className="login-button"
           variant="contained"
           onClick={() => {
-            if (newPassword !== confirmPassword) {
+            if (password !== confirmpassword) {
               window.alert("Passwords does not match");
             } else {
               const updatedPassword = {
