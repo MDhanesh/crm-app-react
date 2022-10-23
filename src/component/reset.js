@@ -72,7 +72,7 @@ export default function Reset() {
             }
           }}
         >
-          Update Password
+          Update Passwords
         </Button>
       </div>
     </div>
