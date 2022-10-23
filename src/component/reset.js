@@ -127,7 +127,7 @@ const Reset = () => {
     };
     console.log(updatePassword);
     fetch(
-      `https://password-reset-110.herokuapp.com/users/reset-password/${id}/${token}`,
+      `https://crm-node-app.herokuapp.com/register/resetpassword/${id}/${token}`,
       {
         method: "POST",
         body: JSON.stringify(updatePassword),
