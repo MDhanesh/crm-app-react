@@ -5,7 +5,9 @@ import axios from "axios";
 
 export default function Forgot() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState({
+    email: "",
+  });
   const handlesubmit = async (e) => {
     e.preventDefault();
     const users = {
@@ -13,7 +15,9 @@ export default function Forgot() {
     };
     const response = await axios.post(
       "https://crm-node-app.herokuapp.com/register/forgot",
-      {}
+      {
+        ...email,
+      }
     );
     console.log(response);
     if (response.data) {
