@@ -101,4 +101,4 @@ const Reset = () => {
   );
 };
 
-export default ResetPassword;
+export default Reset;
