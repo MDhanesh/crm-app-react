@@ -16,7 +16,7 @@ function App() {
           <Route path="/" element={<SignupComponent />} />
           <Route path="/forgot" element={<Forgot />} />
           <Route path="/dashboard" element={<Apps />} />
-          <Route path="/reset" element={<Reset />} />
+          <Route path="/reset/:id/:token" element={<Reset />} />
         </Routes>
       </BrowserRouter>
     </div>
