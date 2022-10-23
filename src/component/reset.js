@@ -109,12 +109,12 @@ import { useParams } from "react-router-dom";
 const Reset = () => {
   const { id, token } = useParams();
 
-  const [newPassword, setNewPassword] = useState("");
+  const [password, setpassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const passwordMatch = (e) => {
     e.preventDefault();
-    if (newPassword === confirmPassword) {
+    if (password === confirmPassword) {
       handleSubmit();
     } else {
       window.alert("Passwords does not match");
@@ -123,7 +123,7 @@ const Reset = () => {
 
   const handleSubmit = () => {
     const updatePassword = {
-      password: newPassword,
+      password: password,
     };
     console.log(updatePassword);
     fetch(
@@ -159,8 +159,8 @@ const Reset = () => {
             <label>New Password</label>
             <input
               type="password"
-              value={newPassword}
-              onChange={(event) => setNewPassword(event.target.value)}
+              value={password}
+              onChange={(event) => setpassword(event.target.value)}
               className="form-control mt-1"
               placeholder="New Password"
               autoComplete="off"
