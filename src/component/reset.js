@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { Typography, TextField, Button } from "@mui/material";
-import axios from "axios";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import { useNavigate, useParams } from "react-router-dom";
 
-export default function Reset() {
+const Reset = () => {
   const { id, token } = useParams();
   const navigate = useNavigate();
-  const [password, setpassword] = useState("");
-  const [confirmpassword, setConfirmPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   return (
     <div>
@@ -41,9 +41,9 @@ export default function Reset() {
           required
           type="password"
           className="login-text-email"
-          onChange={(event) => setpassword(event.target.value)}
+          onChange={(event) => setNewPassword(event.target.value)}
           label="New Password"
-          value={password}
+          value={newPassword}
           variant="standard"
         />
         <TextField
@@ -52,7 +52,7 @@ export default function Reset() {
           className="login-text-fname"
           onChange={(event) => setConfirmPassword(event.target.value)}
           label="Confirm Password "
-          value={confirmpassword}
+          value={confirmPassword}
           variant="standard"
         />
 
@@ -60,16 +60,16 @@ export default function Reset() {
           className="login-button"
           variant="contained"
           onClick={() => {
-            if (password !== confirmpassword) {
+            if (newPassword !== confirmPassword) {
               window.alert("Passwords does not match");
             } else {
               const updatedPassword = {
                 id: id,
                 token: token,
-                password: password,
+                password: newPassword,
               };
               fetch(
-                `https://crm-node-app.herokuapp.com/register/resetpasswordconfirm`,
+                "https://crm-node-app.herokuapp.com/register/resetpassword",
                 {
                   method: "POST",
                   body: JSON.stringify(updatedPassword),
@@ -99,4 +99,6 @@ export default function Reset() {
       </div>
     </div>
   );
-}
+};
+
+export default ResetPassword;
