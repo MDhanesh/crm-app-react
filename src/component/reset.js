@@ -14,9 +14,7 @@ export default function Reset() {
     // console.log(formData);
     const response = await axios.post(
       "https://crm-node-app.herokuapp.com/register/signin",
-      {
-        ...formData,
-      }
+      {}
     );
     console.log(response);
     if (response.data) {
