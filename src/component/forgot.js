@@ -12,7 +12,7 @@ export default function Forgot() {
       email: email,
     };
     const response = await axios.post(
-      "http://localhost:3002/register/forgot",
+      "https://crm-node-app.herokuapp.com/register/forgot",
       {}
     );
     console.log(response);

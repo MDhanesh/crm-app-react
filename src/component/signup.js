@@ -15,9 +15,12 @@ export default function SignupComponent() {
   const handlesubmit = async (e) => {
     e.preventDefault();
     // console.log(formData);
-    const response = await axios.post("http://localhost:3002/register/signup", {
-      ...formData,
-    });
+    const response = await axios.post(
+      "https://crm-node-app.herokuapp.com/register/signup",
+      {
+        ...formData,
+      }
+    );
     console.log(response);
     if (response.data) {
       // localStorage.setItem("token", response.data);
