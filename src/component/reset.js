@@ -7,7 +7,7 @@
 //   const { id, token } = useParams();
 //   const navigate = useNavigate();
 //   const [newPassword, setNewPassword] = useState("");
-//   const [confirmPassword, setConfirmPassword] = useState("");
+//   const [confirmpassword, setconfirmpassword] = useState("");
 
 //   return (
 //     <div>
@@ -50,9 +50,9 @@
 //           required
 //           type="password"
 //           className="login-text-fname"
-//           onChange={(event) => setConfirmPassword(event.target.value)}
+//           onChange={(event) => setconfirmpassword(event.target.value)}
 //           label="Confirm Password "
-//           value={confirmPassword}
+//           value={confirmpassword}
 //           variant="standard"
 //         />
 
@@ -60,7 +60,7 @@
 //           className="login-button"
 //           variant="contained"
 //           onClick={() => {
-//             if (newPassword !== confirmPassword) {
+//             if (newPassword !== confirmpassword) {
 //               window.alert("Passwords does not match");
 //             } else {
 //               const updatedPassword = {
@@ -110,11 +110,11 @@ const Reset = () => {
   const { id, token } = useParams();
 
   const [password, setpassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [confirmpassword, setconfirmpassword] = useState("");
 
   // const passwordMatch = (e) => {
   //   e.preventDefault();
-  //   if (password === confirmPassword) {
+  //   if (password === confirmpassword) {
   //     handleSubmit();
   //   } else {
   //     window.alert("Passwords does not match");
@@ -171,8 +171,8 @@ const Reset = () => {
             <label>Confirm Password</label>
             <input
               type="password"
-              value={confirmPassword}
-              onChange={(event) => setConfirmPassword(event.target.value)}
+              value={confirmpassword}
+              onChange={(event) => setconfirmpassword(event.target.value)}
               className="form-control mt-1"
               placeholder="Confirm Password"
               autoComplete="off"
