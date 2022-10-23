@@ -121,7 +121,8 @@ const Reset = () => {
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     const updatePassword = {
       password: password,
     };
