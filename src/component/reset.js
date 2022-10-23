@@ -7,7 +7,7 @@ export default function Reset() {
   const { id, token } = useParams();
   const navigate = useNavigate();
   const [password, setpassword] = useState("");
-  const [confirmpassword, setConfirmPassword] = useState("");
+  const [confirmpassword, setconfirmpassword] = useState("");
 
   return (
     <div>
@@ -19,7 +19,7 @@ export default function Reset() {
           required
           type="password"
           className="login-text-email"
-          onChange={(e) => setNewPassword(e.target.value)}
+          onChange={(e) => setpassword(e.target.value)}
           label="New Password"
           value={password}
           variant="standard"
@@ -28,7 +28,7 @@ export default function Reset() {
           required
           type="password"
           className="login-text-fname"
-          onChange={(e) => setConfirmPassword(e.target.value)}
+          onChange={(e) => setconfirmpassword(e.target.value)}
           label="Confirm Password "
           value={confirmpassword}
           variant="standard"
