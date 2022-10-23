@@ -110,16 +110,11 @@ const Reset = () => {
   const { id, token } = useParams();
 
   const [password, setpassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [confirmpassword, setconfirmpassword] = useState("");
 
-  // const passwordMatch = (e) => {
-  //   e.preventDefault();
-  //   if (password === confirmPassword) {
-  //     handleSubmit();
-  //   } else {
-  //     window.alert("Passwords does not match");
-  //   }
-  // };
+  const passwordMatch = (e) => {
+    e.preventDefault();
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -127,6 +122,11 @@ const Reset = () => {
       password: password,
     };
     console.log(updatePassword);
+    if (password === confirmpassword) {
+      handleSubmit();
+    } else {
+      window.alert("Passwords does not match");
+    }
     fetch(
       `https://crm-node-app.herokuapp.com/register/resetpassword/${id}/${token}`,
       {
@@ -171,8 +171,8 @@ const Reset = () => {
             <label>Confirm Password</label>
             <input
               type="password"
-              value={confirmPassword}
-              onChange={(event) => setConfirmPassword(event.target.value)}
+              value={confirmpassword}
+              onChange={(event) => setconfirmpassword(event.target.value)}
               className="form-control mt-1"
               placeholder="Confirm Password"
               autoComplete="off"
