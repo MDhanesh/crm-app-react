@@ -6,34 +6,12 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 export default function Reset() {
   const { id, token } = useParams();
   const navigate = useNavigate();
-  const [newPassword, setNewPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [password, setpassword] = useState("");
+  const [confirmpassword, setConfirmPassword] = useState("");
 
   return (
     <div>
       {/* <!-- As a heading --> */}
-      <nav className="navbar bg-primary">
-        <div className="container-fluid">
-          <a className="navbar-brand text-white">CRM Application</a>
-          <form className="d-flex" role="search">
-            <button
-              onClick={() => navigate("/login")}
-              className="btn btn-light"
-              type="submit"
-            >
-              Login
-            </button>
-            &nbsp;
-            <button
-              onClick={() => navigate("/signup")}
-              className="btn btn-light"
-              type="submit"
-            >
-              Signup
-            </button>
-          </form>
-        </div>
-      </nav>
 
       <div className="reset-password">
         <h4 className="heading-text">Reset your password</h4>
@@ -41,18 +19,18 @@ export default function Reset() {
           required
           type="password"
           className="login-text-email"
-          onChange={(event) => setNewPassword(event.target.value)}
+          onChange={(e) => setNewPassword(e.target.value)}
           label="New Password"
-          value={newPassword}
+          value={password}
           variant="standard"
         />
         <TextField
           required
           type="password"
           className="login-text-fname"
-          onChange={(event) => setConfirmPassword(event.target.value)}
+          onChange={(e) => setConfirmPassword(e.target.value)}
           label="Confirm Password "
-          value={confirmPassword}
+          value={confirmpassword}
           variant="standard"
         />
 
@@ -60,21 +38,24 @@ export default function Reset() {
           className="login-button"
           variant="contained"
           onClick={() => {
-            if (newPassword !== confirmPassword) {
+            if (password !== confirmpassword) {
               window.alert("Passwords does not match");
             } else {
               const updatedPassword = {
                 id: id,
                 token: token,
-                password: newPassword,
+                password: password,
               };
-              fetch("http://localhost:3002/register/resetpassword", {
-                method: "POST",
-                body: JSON.stringify(updatedPassword),
-                headers: {
-                  "Content-Type": "application/json",
-                },
-              })
+              fetch(
+                "https://crm-node-app.herokuapp.com/register/resetpassword",
+                {
+                  method: "POST",
+                  body: JSON.stringify(updatedPassword),
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                }
+              )
                 .then((data) => data.json())
                 .then((data) => {
                   if (data.message == "Password successfully reset") {
