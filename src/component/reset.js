@@ -1,68 +1,99 @@
 import React, { useState } from "react";
 import { Typography, TextField, Button } from "@mui/material";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 export default function Reset() {
+  const { id, token } = useParams();
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    password: "",
-    confirmpassword: "",
-  });
-  const handlesubmit = async (e) => {
-    e.preventDefault();
-    // console.log(formData);
-    const response = await axios.post(
-      "https://crm-node-app.herokuapp.com/register/signin",
-      {}
-    );
-    console.log(response);
-    if (response.data) {
-      localStorage.setItem("token", response.data);
-      navigate("/dashboard");
-    }
-  };
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
   return (
-    <>
-      <div style={{ margin: "10%", paddingLeft: "30%" }}>
-        <Typography variant="h4" component="div">
-          Signin Yourself
-        </Typography>
-        <br /> <br />
-        <form onSubmit={handlesubmit}>
-          <div>
-            <TextField
-              label="Password"
-              type="password"
-              name="password"
-              variant="standard"
-              value={formData.password}
-              onChange={(e) =>
-                setFormData({ ...formData, password: e.target.value })
-              }
-            />
-          </div>
-          <br />
-          <div>
-            <TextField
-              label="confirmPassword"
-              type="password"
-              name="password"
-              variant="standard"
-              value={formData.confirmpassword}
-              onChange={(e) =>
-                setFormData({ ...formData, confirmpassword: e.target.value })
-              }
-            />
-          </div>
-          <Link to="/forgot"> Forgot password</Link>
-          <br />
-          <Button variant="contained" type="submit">
-            Submit
-          </Button>
-          <Link to="/"> sign in</Link>
-        </form>
+    <div>
+      {/* <!-- As a heading --> */}
+      <nav className="navbar bg-primary">
+        <div className="container-fluid">
+          <a className="navbar-brand text-white">CRM Application</a>
+          <form className="d-flex" role="search">
+            <button
+              onClick={() => navigate("/login")}
+              className="btn btn-light"
+              type="submit"
+            >
+              Login
+            </button>
+            &nbsp;
+            <button
+              onClick={() => navigate("/signup")}
+              className="btn btn-light"
+              type="submit"
+            >
+              Signup
+            </button>
+          </form>
+        </div>
+      </nav>
+
+      <div className="reset-password">
+        <h4 className="heading-text">Reset your password</h4>
+        <TextField
+          required
+          type="password"
+          className="login-text-email"
+          onChange={(event) => setNewPassword(event.target.value)}
+          label="New Password"
+          value={newPassword}
+          variant="standard"
+        />
+        <TextField
+          required
+          type="password"
+          className="login-text-fname"
+          onChange={(event) => setConfirmPassword(event.target.value)}
+          label="Confirm Password "
+          value={confirmPassword}
+          variant="standard"
+        />
+
+        <Button
+          className="login-button"
+          variant="contained"
+          onClick={() => {
+            if (newPassword !== confirmPassword) {
+              window.alert("Passwords does not match");
+            } else {
+              const updatedPassword = {
+                id: id,
+                token: token,
+                password: newPassword,
+              };
+              fetch("http://localhost:3002/register/resetpassword", {
+                method: "POST",
+                body: JSON.stringify(updatedPassword),
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              })
+                .then((data) => data.json())
+                .then((data) => {
+                  if (data.message == "Password successfully reset") {
+                    window.alert("Password successfully reset");
+                    navigate("/login");
+                  } else if (data.message == "Token expired") {
+                    window.alert("Token expired");
+                  } else {
+                    window.alert(
+                      "Some unexpected error occured.Please try after sometime"
+                    );
+                  }
+                });
+            }
+          }}
+        >
+          Update Password
+        </Button>
       </div>
-    </>
+    </div>
   );
 }
