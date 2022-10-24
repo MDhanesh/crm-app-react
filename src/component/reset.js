@@ -9,7 +9,7 @@ const Reset = () => {
   const [confirmpassword, setconfirmpassword] = useState("");
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     const updatePassword = {
       password: password,
       confirmpassword: confirmpassword,
