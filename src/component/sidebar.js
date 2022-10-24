@@ -13,7 +13,7 @@ export default function Sidebar() {
         {/* <!-- Sidebar - Brand --> */}
         <Link
           className="sidebar-brand d-flex align-items-center justify-content-center"
-          to="/"
+          to="/dashboard"
         >
           <div className="sidebar-brand-icon rotate-n-15">
             <i className="fas fa-laugh-wink"></i>
@@ -28,7 +28,7 @@ export default function Sidebar() {
 
         {/* <!-- Nav Item - Dashboard --> */}
         <li className="nav-item active">
-          <Link className="nav-link" to="/">
+          <Link className="nav-link" to="/dashboard">
             <i className="fas fa-fw fa-tachometer-alt"></i>
 
             <span>Dashboard</span>
