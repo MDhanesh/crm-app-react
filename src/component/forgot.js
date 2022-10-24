@@ -19,9 +19,9 @@ export default function Forgot() {
           // },
         }
       );
-      console.log(response.data);
+      console.log(response);
       if (response) {
-        if (response.data == "Email sent successfully") {
+        if (response.data.message == "Email sent successfully") {
           window.alert(
             "success!! Password reset link has been sent to your mail"
           );
