@@ -29,8 +29,8 @@ export default function Forgot() {
   };
 
   return (
-    <>
-      <section className="container d-flex flex-column vh-100 gradient-custom">
+    <div className="vh-100 gradient-custom">
+      <section className="container d-flex flex-column ">
         <div
           className="row align-items-center justify-content-center
       min-vh-100 g-0"
@@ -78,6 +78,6 @@ export default function Forgot() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

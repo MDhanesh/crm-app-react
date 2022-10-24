@@ -27,8 +27,8 @@ export default function SignupComponent() {
     }
   };
   return (
-    <>
-      <section className="vh-100 bg-image gradient-custom">
+    <div className="vh-100 gradient-custom">
+      <section className=" bg-image ">
         <div className="mask d-flex align-items-center h-100 ">
           <div className="container h-100">
             <div className="row d-flex justify-content-center align-items-center h-100">
@@ -165,6 +165,6 @@ export default function SignupComponent() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }
