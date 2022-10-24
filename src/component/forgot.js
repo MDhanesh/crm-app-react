@@ -12,10 +12,11 @@ export default function Forgot() {
       const response = await axios.post(
         "https://crm-node-app.herokuapp.com/register/forgot",
         {
-          body: JSON.stringify(employeeFromDB),
-          headers: {
-            "Content-Type": "application/json",
-          },
+          email: email,
+          // body: JSON.stringify(employeeFromDB),
+          // headers: {
+          //   "Content-Type": "application/json",
+          // },
         }
       );
       if (response.data) {
