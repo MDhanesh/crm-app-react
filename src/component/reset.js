@@ -46,7 +46,7 @@ function Reset() {
   };
 
   return (
-    <div className="gradient-custom">
+    <div className=" vh-100 gradient-custom">
       <section className="Auth-form-container ">
         <div className="container d-flex flex-column">
           <div

@@ -30,7 +30,7 @@ export default function Forgot() {
 
   return (
     <>
-      <section className="container d-flex flex-column gradient-custom">
+      <section className="container d-flex flex-column vh-100 gradient-custom">
         <div
           className="row align-items-center justify-content-center
       min-vh-100 g-0"
