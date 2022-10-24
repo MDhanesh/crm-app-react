@@ -125,6 +125,7 @@ const Reset = () => {
     e.preventDefault();
     const updatePassword = {
       password: password,
+      confirmpassword: confirmpassword,
     };
     console.log(updatePassword);
     fetch(
