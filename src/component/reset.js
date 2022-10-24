@@ -15,28 +15,28 @@ function Reset() {
       password: password,
     };
     console.log(updatePassword);
-    if (password !== confirmpassword) {
-      window.alert("Passwords does not match");
-    } else {
-      const response = await axios.post(
-        `https://crm-node-app.herokuapp.com/register/resetpassword/${id}/${token}`,
-        {
-          password: password,
-        }
-      );
-      if (response.data) {
-        if (response.data.message === "User Not Exist") {
-          window.alert("User not exists!! Please sign up and create a new one");
-        }
-        if (response.data.message === "Password updated") {
-          window.alert("Password updated successfully!!");
-          navigate("/");
-        }
-        if (response.data.message === "Something went wrong") {
-          window.alert("Token expired!!");
-        }
+    // if (password !== confirmpassword) {
+    //   window.alert("Passwords does not match");
+    // } else {
+    const response = await axios.post(
+      `https://crm-node-app.herokuapp.com/register/resetpassword/${id}/${token}`,
+      {
+        password: password,
+      }
+    );
+    if (response.data) {
+      if (response.data.message === "User Not Exist") {
+        window.alert("User not exists!! Please sign up and create a new one");
+      }
+      if (response.data.message === "Password updated") {
+        window.alert("Password updated successfully!!");
+        navigate("/");
+      }
+      if (response.data.message === "Something went wrong") {
+        window.alert("Token expired!!");
       }
     }
+    //  }
     // fetch(
     //   `https://crm-node-app.herokuapp.com/register/resetpassword/${id}/${token}`,
     //   {
