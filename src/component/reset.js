@@ -21,7 +21,7 @@ function Reset() {
       const response = await axios.post(
         `https://crm-node-app.herokuapp.com/register/resetpassword/${id}/${token}`,
         {
-          updatePassword,
+          password: password,
         }
       );
       if (response.data) {
