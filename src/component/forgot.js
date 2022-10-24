@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { Typography, TextField, Button } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export default function Forgot() {
-  const navigate = useNavigate();
   const [email, setUsername] = useState("");
   const handleSubmit = (e) => {
     {
