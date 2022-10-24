@@ -14,16 +14,15 @@ function Reset() {
     const updatePassword = {
       id: id,
       password: password,
-      confirmpassword: confirmpassword,
     };
     console.log(updatePassword);
     if (password !== confirmpassword) {
       window.alert("Passwords does not match");
     } else {
       const response = await axios.post(
-        "https://crm-node-app.herokuapp.com/register/resetpassword",
+        "https://crm-node-app.herokuapp.com/register/resetpassword/${id}/${token}",
         {
-          updatePassword,
+          password: password,
         }
       );
       if (response.data) {
