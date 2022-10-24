@@ -113,12 +113,12 @@ const Reset = () => {
   const [confirmpassword, setconfirmpassword] = useState("");
 
   // const passwordMatch = (e) => {
-  //   e.preventDefault();
-  //   if (password === confirmpassword) {
-  //     handleSubmit();
-  //   } else {
-  //     window.alert("Passwords does not match");
-  //   }
+  // e.preventDefault();
+  // if (password === confirmpassword) {
+  //   handleSubmit();
+  // } else {
+  //   window.alert("Passwords does not match");
+  // }
   // };
 
   const handleSubmit = (e) => {
@@ -128,6 +128,11 @@ const Reset = () => {
       confirmpassword: confirmpassword,
     };
     console.log(updatePassword);
+    if (password === confirmpassword) {
+      handleSubmit();
+    } else {
+      window.alert("Passwords does not match");
+    }
     fetch(
       `https://crm-node-app.herokuapp.com/register/resetpassword/${id}/${token}`,
       {
