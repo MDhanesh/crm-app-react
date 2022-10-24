@@ -20,7 +20,7 @@ function Reset() {
       window.alert("Passwords does not match");
     } else {
       const response = await axios.post(
-        "https://crm-node-app.herokuapp.com/register/resetpassword/${id}/${token}",
+        `https://crm-node-app.herokuapp.com/register/resetpassword/${id}/${token}`,
         {
           password: password,
         }
