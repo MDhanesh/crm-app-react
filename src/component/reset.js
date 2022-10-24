@@ -24,13 +24,21 @@ function Reset() {
     const response = await axios.post(
       "https://crm-node-app.herokuapp.com/register/signin",
       {
-        method: "POST",
-        body: JSON.stringify(updatePassword),
-        headers: {
-          "Content-Type": "application/json",
-        },
+        password: password,
       }
     );
+    if (response.data) {
+      if (response.data.message === "User not exists!!") {
+        window.alert("User not exists!! Please sign up and create a new one");
+      }
+      if (response.data.message === "Password updated") {
+        window.alert("Password updated successfully!!");
+        navigate("/");
+      }
+      if (response.data.message === "Something went wrong") {
+        window.alert("Token expired!!");
+      }
+    }
     // fetch(
     //   `https://crm-node-app.herokuapp.com/register/resetpassword/${id}/${token}`,
     //   {
@@ -88,7 +96,7 @@ function Reset() {
             <button
               type="submit"
               className="btn btn-primary"
-              onClick={(e) => handleSubmit()}
+              onClick={(e) => handleSubmit(e)}
             >
               Submit
             </button>

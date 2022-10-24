@@ -13,10 +13,6 @@ export default function Forgot() {
         "https://crm-node-app.herokuapp.com/register/forgot",
         {
           email: email,
-          // body: JSON.stringify(employeeFromDB),
-          // headers: {
-          //   "Content-Type": "application/json",
-          // },
         }
       );
       console.log(response);
@@ -29,26 +25,6 @@ export default function Forgot() {
           window.alert("Please enter valid and registered email ID");
         }
       }
-      // fetch("https://crm-node-app.herokuapp.com/register/forgot", {
-      //   method: "POST",
-      //   body: JSON.stringify(employeeFromDB),
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      // })
-
-      // .then((data) => data.json())
-
-      // .then((data) => {
-      //   console.log(data);
-      //   if (data.message == "Email sent successfully") {
-      //     window.alert(
-      //       "success!! Password reset link has been sent to your mail"
-      //     );
-      //   } else {
-      //     window.alert("Please enter valid and registered email ID");
-      //   }
-      // });
     }
   };
 
