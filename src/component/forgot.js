@@ -18,6 +18,15 @@ export default function Forgot() {
           },
         }
       );
+      if (response.data) {
+        if (response == "Email sent successfully") {
+          window.alert(
+            "success!! Password reset link has been sent to your mail"
+          );
+        } else {
+          window.alert("Please enter valid and registered email ID");
+        }
+      }
       // fetch("https://crm-node-app.herokuapp.com/register/forgot", {
       //   method: "POST",
       //   body: JSON.stringify(employeeFromDB),
