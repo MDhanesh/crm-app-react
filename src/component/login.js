@@ -75,7 +75,7 @@ export default function LoginComponent() {
                       </div>
 
                       <p className="small mb-5 pb-lg-2">
-                        <Link className="text-white-50" to="/signup">
+                        <Link className="text-white-50" to="/forgot">
                           Forgot password?
                         </Link>
                       </p>
@@ -103,9 +103,9 @@ export default function LoginComponent() {
                   <div>
                     <p className="mb-0">
                       Don't have an account?{" "}
-                      <a href="#!" className="text-white-50 fw-bold">
+                      <Link to="/signup" className="text-white-50 fw-bold">
                         Sign Up
-                      </a>
+                      </Link>
                     </p>
                   </div>
                 </div>
