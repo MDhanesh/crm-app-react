@@ -49,7 +49,7 @@ export default function LoginComponent() {
                           id="typeEmailX"
                           placeholder="Enter your email"
                           className="form-control form-control-lg"
-                          required=""
+                          required
                           value={formData.email}
                           onChange={(e) =>
                             setFormData({ ...formData, email: e.target.value })
@@ -66,7 +66,7 @@ export default function LoginComponent() {
                           id="typePasswordX"
                           className="form-control form-control-lg"
                           placeholder="Enter your password"
-                          required=""
+                          required
                           value={formData.password}
                           onChange={(e) =>
                             setFormData({

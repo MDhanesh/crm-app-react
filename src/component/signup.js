@@ -50,7 +50,7 @@ export default function SignupComponent() {
                         <input
                           type="text"
                           name="firstname"
-                          required=""
+                          required
                           className="form-control form-control-lg"
                           placeholder="Firstname"
                           value={formData.firstname}
@@ -71,7 +71,7 @@ export default function SignupComponent() {
                           id="lastname"
                           className="form-control form-control-lg"
                           placeholder="Lastname"
-                          required=""
+                          required
                           value={formData.lastname}
                           onChange={(e) =>
                             setFormData({
@@ -91,7 +91,7 @@ export default function SignupComponent() {
                           id="form3Example3cg"
                           className="form-control form-control-lg"
                           placeholder="Email"
-                          required=""
+                          required
                           value={formData.email}
                           onChange={(e) =>
                             setFormData({ ...formData, email: e.target.value })
@@ -108,7 +108,7 @@ export default function SignupComponent() {
                           id="form3Example4cg"
                           className="form-control form-control-lg"
                           placeholder="password"
-                          required=""
+                          required
                           value={formData.password}
                           onChange={(e) =>
                             setFormData({
@@ -128,7 +128,7 @@ export default function SignupComponent() {
                         </label>
                         <input
                           type="password"
-                          required=""
+                          required
                           id="form3Example4cdg"
                           className="form-control form-control-lg"
                           placeholder="Confirm your password"

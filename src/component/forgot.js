@@ -30,7 +30,7 @@ export default function Forgot() {
 
   return (
     <div>
-      <div className="container d-flex flex-column">
+      <div className="container d-flex flex-column gradient-custom">
         <div
           className="row align-items-center justify-content-center
       min-vh-100 g-0"
@@ -55,7 +55,7 @@ export default function Forgot() {
                     className="form-control"
                     name="email"
                     placeholder="Enter Your Email"
-                    required=""
+                    required
                     onChange={(event) => setUsername(event.target.value)}
                     label="Email"
                     value={email}

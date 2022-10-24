@@ -46,7 +46,7 @@ function Reset() {
   };
 
   return (
-    <div className="Auth-form-container">
+    <div className="Auth-form-container gradient-custom">
       <div className="container d-flex flex-column">
         <div
           className="row align-items-center justify-content-center
@@ -68,7 +68,7 @@ function Reset() {
                     className="form-control"
                     name="email"
                     placeholder="Enter Your password"
-                    required=""
+                    required
                     value={password}
                     onChange={(e) => setpassword(e.target.value)}
                   />
@@ -83,7 +83,7 @@ function Reset() {
                     className="form-control"
                     name="email"
                     placeholder="Confirm password"
-                    required=""
+                    required
                     value={confirmpassword}
                     onChange={(e) => setconfirmpassword(e.target.value)}
                   />
