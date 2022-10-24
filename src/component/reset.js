@@ -18,54 +18,31 @@ function Reset() {
       confirmpassword: confirmpassword,
     };
     console.log(updatedPassword);
-    // if (password !== confirmpassword) {
-    //   window.alert("Passwords does not match");
-    // } else {
-    const response = await axios.post(
-      `https://crm-node-app.herokuapp.com/register/resetpassword/${id}/${token}`,
-      {
-        id: id,
-        token: token,
-        password: password,
-        confirmpassword: confirmpassword,
-      }
-    );
-    if (response.data) {
-      if (response.data.message === "User Not Exist") {
-        window.alert("User not exists!! Please sign up and create a new one");
-      }
-      if (response.data.message === "Password updated") {
-        window.alert("Password updated successfully!!");
-        navigate("/");
-      }
-      if (response.data.message === "Something went wrong") {
-        window.alert("Token expired!!");
+    if (password !== confirmpassword) {
+      window.alert("Passwords does not match");
+    } else {
+      const response = await axios.post(
+        `https://crm-node-app.herokuapp.com/register/resetpassword/${id}/${token}`,
+        {
+          id: id,
+          token: token,
+          password: password,
+          confirmpassword: confirmpassword,
+        }
+      );
+      if (response.data) {
+        if (response.data.message === "User Not Exist") {
+          window.alert("User not exists!! Please sign up and create a new one");
+        }
+        if (response.data.message === "Password updated") {
+          window.alert("Password updated successfully!!");
+          navigate("/");
+        }
+        if (response.data.message === "Something went wrong") {
+          window.alert("Token expired!!");
+        }
       }
     }
-    //  }
-    // fetch(
-    //   `https://crm-node-app.herokuapp.com/register/resetpassword/${id}/${token}`,
-    //   {
-    //     method: "POST",
-    //     body: JSON.stringify(updatePassword),
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //   }
-    // )
-    // .then((data) => data.json())
-    // .then((data) => {
-    //   if (data.message === "User not exists!!") {
-    //     window.alert("User not exists!! Please sign up and create a new one");
-    //   }
-    //   if (data.message === "Password updated") {
-    //     window.alert("Password updated successfully!!");
-    //     navigate("/");
-    //   }
-    //   if (data.message === "Something went wrong") {
-    //     window.alert("Token expired!!");
-    //   }
-    // });
   };
 
   return (
