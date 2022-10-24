@@ -16,7 +16,7 @@ function Reset() {
       token: token,
       password: password,
     };
-    console.log(updatePassword);
+    console.log(updatedPassword);
     // if (password !== confirmpassword) {
     //   window.alert("Passwords does not match");
     // } else {
