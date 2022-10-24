@@ -55,7 +55,7 @@ const Reset = () => {
             <input
               type="password"
               value={password}
-              onChange={(event) => setpassword(event.target.value)}
+              onChange={(e) => setpassword(e.target.value)}
               className="form-control mt-1"
               placeholder="New Password"
               autoComplete="off"
@@ -66,7 +66,7 @@ const Reset = () => {
             <input
               type="password"
               value={confirmpassword}
-              onChange={(event) => setconfirmpassword(event.target.value)}
+              onChange={(e) => setconfirmpassword(e.target.value)}
               className="form-control mt-1"
               placeholder="Confirm Password"
               autoComplete="off"
