@@ -27,6 +27,7 @@ function Reset() {
         id: id,
         token: token,
         password: password,
+        confirmpassword: confirmpassword,
       }
     );
     if (response.data) {
