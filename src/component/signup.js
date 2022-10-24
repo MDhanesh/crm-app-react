@@ -171,6 +171,10 @@ export default function SignupComponent() {
                           id="form3Example3cg"
                           className="form-control form-control-lg"
                           placeholder="Email"
+                          value={formData.email}
+                          onChange={(e) =>
+                            setFormData({ ...formData, email: e.target.value })
+                          }
                         />
                       </div>
 
