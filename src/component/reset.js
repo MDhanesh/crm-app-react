@@ -8,8 +8,8 @@ const Reset = () => {
   const [password, setpassword] = useState("");
   const [confirmpassword, setconfirmpassword] = useState("");
 
-  const handleSubmit = (e) => {
-    // e.preventDefault();
+  const handleSubmit = () => {
+    e.preventDefault();
     const updatePassword = {
       password: password,
       confirmpassword: confirmpassword,
