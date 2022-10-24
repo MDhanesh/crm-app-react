@@ -10,7 +10,7 @@ function Reset() {
   const [confirmpassword, setconfirmpassword] = useState("");
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     const updatePassword = {
       password: password,
       confirmpassword: confirmpassword,

@@ -74,7 +74,7 @@ export default function LoginComponent() {
                         />
                       </div>
 
-                      <p className="small mb-5 pb-lg-2">
+                      <p className="small mb-5 pb-lg-2 ">
                         <Link className="text-white-50" to="/forgot">
                           Forgot password?
                         </Link>
