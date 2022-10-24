@@ -66,7 +66,64 @@ function Reset() {
 
   return (
     <div className="Auth-form-container">
-      <form className="Auth-form">
+      <div className="container d-flex flex-column">
+        <div
+          className="row align-items-center justify-content-center
+      min-vh-100 g-0"
+        >
+          <div className="col-12 col-md-8 col-lg-4 border-top border-3 border-primary">
+            <div className="card shadow-sm">
+              <div className="card-body">
+                <div className="mb-4">
+                  <h5>Reset Password</h5>
+                </div>
+                <div className="mb-3">
+                  <label htmlforr="password" className="form-label">
+                    Password
+                  </label>
+                  <input
+                    autoComplete="off"
+                    type="password"
+                    id="email"
+                    className="form-control"
+                    name="email"
+                    placeholder="Enter Your password"
+                    required=""
+                    value={password}
+                    onChange={(e) => setpassword(e.target.value)}
+                  />
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="password" className="form-label">
+                    Confirm Password
+                  </label>
+                  <input
+                    autoComplete="off"
+                    type="password"
+                    id="email"
+                    className="form-control"
+                    name="email"
+                    placeholder="Confirm password"
+                    required=""
+                    value={confirmpassword}
+                    onChange={(e) => setconfirmpassword(e.target.value)}
+                  />
+                </div>
+                <div className="mb-3 d-grid">
+                  <button
+                    type="submit"
+                    className="btn btn-primary"
+                    onClick={(e) => handleSubmit(e)}
+                  >
+                    Change password
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* <form className="Auth-form">
         <div className="Auth-form-content">
           <h3 className="Auth-form-title">Reset Password</h3>
           <div className="form-group mt-3">
@@ -102,7 +159,7 @@ function Reset() {
             </button>
           </div>
         </div>
-      </form>
+      </form> */}
     </div>
   );
 }

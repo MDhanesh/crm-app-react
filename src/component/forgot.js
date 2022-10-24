@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Typography, TextField, Button } from "@mui/material";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function Forgot() {
   const [email, setUsername] = useState("");
@@ -30,26 +31,74 @@ export default function Forgot() {
 
   return (
     <div>
+      <div className="container d-flex flex-column">
+        <div
+          className="row align-items-center justify-content-center
+      min-vh-100 g-0"
+        >
+          <div className="col-12 col-md-8 col-lg-4 border-top border-3 border-primary">
+            <div className="card shadow-sm">
+              <div className="card-body">
+                <div className="mb-4">
+                  <h5>Forgot Password?</h5>
+                  <p className="mb-2">
+                    Enter your registered email ID to get reset password link
+                  </p>
+                </div>
+
+                <div className="mb-3">
+                  <label for="email" className="form-label">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    className="form-control"
+                    name="email"
+                    placeholder="Enter Your Email"
+                    required=""
+                    onChange={(event) => setUsername(event.target.value)}
+                    label="Email"
+                    value={email}
+                  />
+                </div>
+                <div className="mb-3 d-grid">
+                  <button
+                    type="submit"
+                    className="btn btn-primary"
+                    onClick={() => handleSubmit()}
+                  >
+                    Send reset Link
+                  </button>
+                </div>
+                <span>
+                  Don't have an account? <Link to="/">sign in</Link>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       {/* <!-- As a heading --> */}
 
-      <div className="forgot-password">
-        <h4 className="heading-text">Reset your password</h4>
+      {/* <div classNameName="forgot-password">
+        <h4 classNameName="heading-text">Reset your password</h4>
         <TextField
           required
-          className="login-text-email"
+          classNameName="login-text-email"
           onChange={(event) => setUsername(event.target.value)}
           label="Email"
           value={email}
           variant="standard"
         />
         <Button
-          className="login-button"
+          classNameName="login-button"
           variant="contained"
           onClick={() => handleSubmit()}
         >
           Send password reset email
         </Button>
-      </div>
+      </div> */}
     </div>
   );
 }
