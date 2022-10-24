@@ -12,9 +12,7 @@ function Reset() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const updatePassword = {
-      id: id,
       password: password,
-      confirmpassword: confirmpassword,
     };
     console.log(updatePassword);
     if (password !== confirmpassword) {
