@@ -217,7 +217,7 @@ export default function SignupComponent() {
 
                       <div className="d-flex justify-content-center">
                         <button
-                          type="button"
+                          type="submit"
                           className="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
                         >
                           Register
