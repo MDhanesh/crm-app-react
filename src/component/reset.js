@@ -28,7 +28,7 @@ function Reset() {
       }
     );
     if (response.data) {
-      if (response.data.message === "User not exists!!") {
+      if (response.data.message === "User Not Exist") {
         window.alert("User not exists!! Please sign up and create a new one");
       }
       if (response.data.message === "Password updated") {
