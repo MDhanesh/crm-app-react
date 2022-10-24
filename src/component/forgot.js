@@ -4,30 +4,40 @@ import axios from "axios";
 
 export default function Forgot() {
   const [email, setUsername] = useState("");
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     {
       const employeeFromDB = {
         email: email,
       };
-      fetch("https://crm-node-app.herokuapp.com/register/forgot", {
-        method: "POST",
-        body: JSON.stringify(employeeFromDB),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-        .then((data) => data.json())
+      const response = await axios.post(
+        "https://crm-node-app.herokuapp.com/register/forgot",
+        {
+          body: JSON.stringify(employeeFromDB),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      // fetch("https://crm-node-app.herokuapp.com/register/forgot", {
+      //   method: "POST",
+      //   body: JSON.stringify(employeeFromDB),
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      // })
 
-        .then((data) => {
-          console.log(data);
-          if (data.message == "Email sent successfully") {
-            window.alert(
-              "success!! Password reset link has been sent to your mail"
-            );
-          } else {
-            window.alert("Please enter valid and registered email ID");
-          }
-        });
+      // .then((data) => data.json())
+
+      // .then((data) => {
+      //   console.log(data);
+      //   if (data.message == "Email sent successfully") {
+      //     window.alert(
+      //       "success!! Password reset link has been sent to your mail"
+      //     );
+      //   } else {
+      //     window.alert("Please enter valid and registered email ID");
+      //   }
+      // });
     }
   };
 

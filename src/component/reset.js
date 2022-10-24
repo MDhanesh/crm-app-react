@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
-const Reset = () => {
+function Reset() {
   const { id, token } = useParams();
   const navigate = useNavigate();
   const [password, setpassword] = useState("");
   const [confirmpassword, setconfirmpassword] = useState("");
 
-  const handleSubmit = () => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const updatePassword = {
       password: password,
@@ -20,8 +21,8 @@ const Reset = () => {
     } else {
       window.alert("Passwords does not match");
     }
-    fetch(
-      `https://crm-node-app.herokuapp.com/register/resetpassword/${id}/${token}`,
+    const response = await axios.post(
+      "https://crm-node-app.herokuapp.com/register/signin",
       {
         method: "POST",
         body: JSON.stringify(updatePassword),
@@ -29,20 +30,30 @@ const Reset = () => {
           "Content-Type": "application/json",
         },
       }
-    )
-      .then((data) => data.json())
-      .then((data) => {
-        if (data.message === "User not exists!!") {
-          window.alert("User not exists!! Please sign up and create a new one");
-        }
-        if (data.message === "Password updated") {
-          window.alert("Password updated successfully!!");
-          navigate("/");
-        }
-        if (data.message === "Something went wrong") {
-          window.alert("Token expired!!");
-        }
-      });
+    );
+    // fetch(
+    //   `https://crm-node-app.herokuapp.com/register/resetpassword/${id}/${token}`,
+    //   {
+    //     method: "POST",
+    //     body: JSON.stringify(updatePassword),
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //   }
+    // )
+    // .then((data) => data.json())
+    // .then((data) => {
+    //   if (data.message === "User not exists!!") {
+    //     window.alert("User not exists!! Please sign up and create a new one");
+    //   }
+    //   if (data.message === "Password updated") {
+    //     window.alert("Password updated successfully!!");
+    //     navigate("/");
+    //   }
+    //   if (data.message === "Something went wrong") {
+    //     window.alert("Token expired!!");
+    //   }
+    // });
   };
 
   return (
@@ -77,7 +88,7 @@ const Reset = () => {
             <button
               type="submit"
               className="btn btn-primary"
-              onClick={() => handleSubmit()}
+              onClick={(e) => handleSubmit()}
             >
               Submit
             </button>
@@ -86,6 +97,6 @@ const Reset = () => {
       </form>
     </div>
   );
-};
+}
 
 export default Reset;
