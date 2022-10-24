@@ -16,27 +16,26 @@ function Reset() {
       confirmpassword: confirmpassword,
     };
     console.log(updatePassword);
-    if (password === confirmpassword) {
-      handleSubmit();
-    } else {
+    if (password !== confirmpassword) {
       window.alert("Passwords does not match");
-    }
-    const response = await axios.post(
-      "https://crm-node-app.herokuapp.com/register/signin",
-      {
-        password: password,
-      }
-    );
-    if (response.data) {
-      if (response.data.message === "User Not Exist") {
-        window.alert("User not exists!! Please sign up and create a new one");
-      }
-      if (response.data.message === "Password updated") {
-        window.alert("Password updated successfully!!");
-        navigate("/");
-      }
-      if (response.data.message === "Something went wrong") {
-        window.alert("Token expired!!");
+    } else {
+      const response = await axios.post(
+        "https://crm-node-app.herokuapp.com/register/signin",
+        {
+          password: password,
+        }
+      );
+      if (response.data) {
+        if (response.data.message === "User Not Exist") {
+          window.alert("User not exists!! Please sign up and create a new one");
+        }
+        if (response.data.message === "Password updated") {
+          window.alert("Password updated successfully!!");
+          navigate("/");
+        }
+        if (response.data.message === "Something went wrong") {
+          window.alert("Token expired!!");
+        }
       }
     }
     // fetch(
@@ -111,7 +110,7 @@ function Reset() {
                   <button
                     type="submit"
                     className="btn btn-primary"
-                    onSubmit={(e) => handleSubmit(e)}
+                    onClick={(e) => handleSubmit(e)}
                   >
                     Change password
                   </button>
