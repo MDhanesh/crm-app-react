@@ -24,7 +24,7 @@ export default function SignupComponent() {
     console.log(response);
     if (response.data) {
       // localStorage.setItem("token", response.data);
-      navigate("/");
+      navigate("/signup");
     }
   };
   return (
