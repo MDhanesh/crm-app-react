@@ -6,6 +6,32 @@ import axios from "axios";
 export default function Forgot() {
   const navigate = useNavigate();
   const [email, setUsername] = useState("");
+  const handleSubmit = (e) => {
+    {
+      const employeeFromDB = {
+        email: email,
+      };
+      fetch("https://crm-node-app.herokuapp.com/register/forgot", {
+        method: "POST",
+        body: JSON.stringify(employeeFromDB),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((data) => data.json())
+
+        .then((data) => {
+          console.log(data);
+          if (data.message == "Email sent successfully") {
+            window.alert(
+              "success!! Password reset link has been sent to your mail"
+            );
+          } else {
+            window.alert("Please enter valid and registered email ID");
+          }
+        });
+    }
+  };
 
   return (
     <div>
@@ -24,30 +50,7 @@ export default function Forgot() {
         <Button
           className="login-button"
           variant="contained"
-          onClick={() => {
-            const employeeFromDB = {
-              email: email,
-            };
-            fetch("https://crm-node-app.herokuapp.com/register/forgot", {
-              method: "POST",
-              body: JSON.stringify(employeeFromDB),
-              headers: {
-                "Content-Type": "application/json",
-              },
-            })
-              .then((data) => data.json())
-
-              .then((data) => {
-                console.log(data);
-                if (data.message == "Email sent successfully") {
-                  window.alert(
-                    "success!! Password reset link has been sent to your mail"
-                  );
-                } else {
-                  window.alert("Please enter valid and registered email ID");
-                }
-              });
-          }}
+          onClick={() => handleSubmit()}
         >
           Send password reset email
         </Button>

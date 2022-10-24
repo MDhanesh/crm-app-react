@@ -62,7 +62,7 @@ export default function LoginComponent() {
           <Button variant="contained" type="submit">
             Submit
           </Button>
-          <Link to="/"> sign in</Link>
+          <Link to="/siginup"> signup</Link>
         </form>
       </div>
     </>

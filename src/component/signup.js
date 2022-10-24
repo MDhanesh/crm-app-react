@@ -24,7 +24,7 @@ export default function SignupComponent() {
     console.log(response);
     if (response.data) {
       // localStorage.setItem("token", response.data);
-      navigate("/login");
+      navigate("/");
     }
   };
   return (
@@ -103,7 +103,7 @@ export default function SignupComponent() {
           <Button variant="contained" type="submit">
             Submit
           </Button>
-          <Link to="/login"> login</Link>
+          <Link to="/"> login</Link>
         </form>
       </div>
     </>
