@@ -6,9 +6,6 @@ export default function Forgot() {
   const [email, setUsername] = useState("");
   const handleSubmit = async (e) => {
     {
-      // const employeeFromDB = {
-      //   email: email,
-      // };
       const response = await axios.post(
         "https://crm-node-app.herokuapp.com/register/forgot",
         {
