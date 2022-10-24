@@ -84,7 +84,6 @@ function Reset() {
                   <input
                     autoComplete="off"
                     type="password"
-                    id="email"
                     className="form-control"
                     name="email"
                     placeholder="Enter Your password"
@@ -100,7 +99,6 @@ function Reset() {
                   <input
                     autoComplete="off"
                     type="password"
-                    id="email"
                     className="form-control"
                     name="email"
                     placeholder="Confirm password"
