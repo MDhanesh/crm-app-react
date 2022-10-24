@@ -77,7 +77,7 @@ const Reset = () => {
             <button
               type="submit"
               className="btn btn-primary"
-              onClick={() => handleSubmit()}
+              onClick={(e) => handleSubmit()}
             >
               Submit
             </button>
