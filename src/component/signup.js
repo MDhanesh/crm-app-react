@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Typography, TextField, Button } from "@mui/material";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -29,92 +28,17 @@ export default function SignupComponent() {
   };
   return (
     <>
-      {/* <div style={{ margin: "10%", paddingLeft: "30%" }}>
-        <Typography variant="h4" component="div">
-          Signup Yourself
-        </Typography>
-        <br /> <br />
-        <form onSubmit={handlesubmit}>
-          <div>
-            <TextField
-              type="text"
-              name="firstname"
-              label="First Name"
-              variant="standard"
-              value={formData.firstname}
-              onChange={(e) =>
-                setFormData({ ...formData, firstname: e.target.value })
-              }
-            />
-          </div>
-          <br />
-          <div>
-            <TextField
-              type="text"
-              name="lastname"
-              label="last Name"
-              variant="standard"
-              value={formData.lastname}
-              onChange={(e) =>
-                setFormData({ ...formData, lastname: e.target.value })
-              }
-            />
-          </div>
-          <br />
-          <div>
-            <TextField
-              type="email"
-              name="email"
-              label="Email"
-              variant="standard"
-              value={formData.email}
-              onChange={(e) =>
-                setFormData({ ...formData, email: e.target.value })
-              }
-            />
-          </div>
-          <br />
-          <div>
-            <TextField
-              label="Password"
-              type="password"
-              name="password"
-              variant="standard"
-              value={formData.password}
-              onChange={(e) =>
-                setFormData({ ...formData, password: e.target.value })
-              }
-            />
-          </div>
-          <br />
-          <div>
-            <TextField
-              label="Confirm Password"
-              type="password"
-              name="confirmpassword"
-              variant="standard"
-              value={formData.confirmpassword}
-              onChange={(e) =>
-                setFormData({ ...formData, confirmpassword: e.target.value })
-              }
-            />
-          </div>
-          <br />
-          <Button variant="contained" type="submit">
-            Submit
-          </Button>
-          <Link to="/"> login</Link>
-        </form>
-      </div> */}
-      {/* ///////////////////////////// */}
-      <section className="vh-100 bg-image">
-        <div className="mask d-flex align-items-center h-100 gradient-custom-3">
+      <section className="vh-100 bg-image gradient-custom">
+        <div className="mask d-flex align-items-center h-100 ">
           <div className="container h-100">
             <div className="row d-flex justify-content-center align-items-center h-100">
               <div className="col-12 col-md-9 col-lg-7 col-xl-6">
-                <div className="card" style={{ borderradius: "15px" }}>
+                <div
+                  className="card  bg-dark text-white"
+                  style={{ borderradius: "15px" }}
+                >
                   <div className="card-body p-5">
-                    <h2 className="text-uppercase text-center mb-5">
+                    <h2 className=" text-white-50 text-uppercase text-center mb-5">
                       Create an account
                     </h2>
 
@@ -126,6 +50,7 @@ export default function SignupComponent() {
                         <input
                           type="text"
                           name="firstname"
+                          required=""
                           className="form-control form-control-lg"
                           placeholder="Firstname"
                           value={formData.firstname}
@@ -146,6 +71,7 @@ export default function SignupComponent() {
                           id="lastname"
                           className="form-control form-control-lg"
                           placeholder="Lastname"
+                          required=""
                           value={formData.lastname}
                           onChange={(e) =>
                             setFormData({
@@ -165,6 +91,7 @@ export default function SignupComponent() {
                           id="form3Example3cg"
                           className="form-control form-control-lg"
                           placeholder="Email"
+                          required=""
                           value={formData.email}
                           onChange={(e) =>
                             setFormData({ ...formData, email: e.target.value })
@@ -181,6 +108,7 @@ export default function SignupComponent() {
                           id="form3Example4cg"
                           className="form-control form-control-lg"
                           placeholder="password"
+                          required=""
                           value={formData.password}
                           onChange={(e) =>
                             setFormData({
@@ -200,6 +128,7 @@ export default function SignupComponent() {
                         </label>
                         <input
                           type="password"
+                          required=""
                           id="form3Example4cdg"
                           className="form-control form-control-lg"
                           placeholder="Confirm your password"
@@ -216,20 +145,17 @@ export default function SignupComponent() {
                       <div className="d-flex justify-content-center">
                         <button
                           type="submit"
-                          className="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
+                          className="btn btn-outline-light btn-lg px-5"
                         >
                           Register
                         </button>
                       </div>
 
-                      <p className="text-center text-muted mt-5 mb-0">
+                      <p className="text-center text-white-50 mt-5 mb-0">
                         Already have an account?
-                        <Link to="/" className="fw-bold text-body">
+                        <Link to="/" className="fw-bold text-white-50">
                           <u>Login here</u>
                         </Link>
-                        {/* <a href="#!" className="fw-bold text-body">
-                          <u>Login here</u>
-                        </a> */}
                       </p>
                     </form>
                   </div>

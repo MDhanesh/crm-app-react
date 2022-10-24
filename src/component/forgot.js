@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Typography, TextField, Button } from "@mui/material";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
@@ -7,9 +6,9 @@ export default function Forgot() {
   const [email, setUsername] = useState("");
   const handleSubmit = async (e) => {
     {
-      const employeeFromDB = {
-        email: email,
-      };
+      // const employeeFromDB = {
+      //   email: email,
+      // };
       const response = await axios.post(
         "https://crm-node-app.herokuapp.com/register/forgot",
         {
@@ -79,26 +78,6 @@ export default function Forgot() {
           </div>
         </div>
       </div>
-      {/* <!-- As a heading --> */}
-
-      {/* <div classNameName="forgot-password">
-        <h4 classNameName="heading-text">Reset your password</h4>
-        <TextField
-          required
-          classNameName="login-text-email"
-          onChange={(event) => setUsername(event.target.value)}
-          label="Email"
-          value={email}
-          variant="standard"
-        />
-        <Button
-          classNameName="login-button"
-          variant="contained"
-          onClick={() => handleSubmit()}
-        >
-          Send password reset email
-        </Button>
-      </div> */}
     </div>
   );
 }

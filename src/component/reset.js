@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function Reset() {
@@ -102,43 +102,6 @@ function Reset() {
           </div>
         </div>
       </div>
-      {/* <form className="Auth-form">
-        <div className="Auth-form-content">
-          <h3 className="Auth-form-title">Reset Password</h3>
-          <div className="form-group mt-3">
-            <label>New Password</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setpassword(e.target.value)}
-              className="form-control mt-1"
-              placeholder="New Password"
-              autoComplete="off"
-            />
-          </div>
-          <div className="form-group mt-3">
-            <label>Confirm Password</label>
-            <input
-              type="password"
-              value={confirmpassword}
-              onChange={(e) => setconfirmpassword(e.target.value)}
-              className="form-control mt-1"
-              placeholder="Confirm Password"
-              autoComplete="off"
-            />
-          </div>
-
-          <div className="d-grid gap-2 mt-4">
-            <button
-              type="submit"
-              className="btn btn-primary"
-              onClick={(e) => handleSubmit(e)}
-            >
-              Submit
-            </button>
-          </div>
-        </div>
-      </form> */}
     </div>
   );
 }
