@@ -29,7 +29,7 @@ export default function Forgot() {
   };
 
   return (
-    <div>
+    <>
       <section className="container d-flex flex-column gradient-custom">
         <div
           className="row align-items-center justify-content-center
@@ -78,6 +78,6 @@ export default function Forgot() {
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 }
