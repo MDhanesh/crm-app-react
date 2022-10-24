@@ -15,6 +15,7 @@ function Reset() {
       id: id,
       token: token,
       password: password,
+      confirmpassword: confirmpassword,
     };
     console.log(updatedPassword);
     // if (password !== confirmpassword) {
