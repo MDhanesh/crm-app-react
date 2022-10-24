@@ -10,7 +10,7 @@ function Reset() {
   const [confirmpassword, setconfirmpassword] = useState("");
 
   const handleSubmit = async (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     const updatePassword = {
       password: password,
       confirmpassword: confirmpassword,
@@ -113,7 +113,7 @@ function Reset() {
                   <button
                     type="submit"
                     className="btn btn-primary"
-                    onClick={(e) => handleSubmit(e)}
+                    onSubmit={(e) => handleSubmit(e)}
                   >
                     Change password
                   </button>
