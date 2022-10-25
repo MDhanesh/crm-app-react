@@ -74,7 +74,7 @@ const AddServices = () => {
             status: status,
           };
 
-          fetch("https://crm-node-app.herokuapp.com/servies/create", {
+          fetch("https://crm-node-app.herokuapp.com/services/create", {
             method: "POST",
             body: JSON.stringify(newCustomer),
             headers: {
