@@ -24,7 +24,7 @@ function AddServices() {
       e.preventDefault();
       const response = await axios.post(
         `https://crm-node-app.herokuapp.com/contact/create/`,
-        { products: { ...formData } },
+        { services: { ...formData } },
         { headers: { accesstoken: localStorage.getItem("token") } }
       );
       //   const notify = () =>
