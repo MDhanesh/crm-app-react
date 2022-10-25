@@ -30,7 +30,7 @@ export default function Forgot() {
       <nav className="navbar navbar-dark bg-dark  text-center">
         <div className="container">
           <h5 className="navbar-text fw-bold justify-content-center align-content-center ">
-            Customer Relationship Manager
+            Customer Relationship Manageent
           </h5>
           <Link to="/">
             <button className="btn btn-primary" type="submit">
