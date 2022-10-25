@@ -7,24 +7,45 @@ export default function LoginComponent() {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
+    error: {
+      email: "",
+      password: "",
+    },
   });
   const handlesubmit = async (e) => {
-    e.preventDefault();
-    // console.log(formData);
-    const response = await axios.post(
-      "https://crm-node-app.herokuapp.com/register/signin",
-      {
-        ...formData,
+    try {
+      e.preventDefault();
+      // console.log(formData);
+      const response = await axios.post(
+        "https://crm-node-app.herokuapp.com/register/signin",
+        {
+          ...formData,
+        }
+      );
+      console.log(response);
+      if (response.data) {
+        localStorage.setItem("token", response.data);
+        navigate("/dashboard");
       }
-    );
-    console.log(response);
-    if (response.data) {
-      localStorage.setItem("token", response.data);
-      navigate("/dashboard");
+    } catch (error) {
+      console.log(error);
+      window.alert("Please enter registered email ID and Password");
     }
   };
   return (
     <>
+      <nav className="navbar navbar-dark bg-dark  text-center">
+        <div className="container">
+          <h5 className="navbar-text fw-bold justify-content-center align-content-center ">
+            Customer Relationship Manager
+          </h5>
+          <Link to="/signup">
+            <button className="btn btn-primary" type="submit">
+              SIGNUP
+            </button>
+          </Link>
+        </div>
+      </nav>
       <section className="vh-100 gradient-custom">
         <div className="container py-5 h-100">
           <div className="row d-flex justify-content-center align-items-center h-100">
@@ -49,7 +70,7 @@ export default function LoginComponent() {
                           id="typeEmailX"
                           placeholder="Enter your email"
                           className="form-control form-control-lg"
-                          required
+                          // required
                           value={formData.email}
                           onChange={(e) =>
                             setFormData({ ...formData, email: e.target.value })
@@ -66,7 +87,7 @@ export default function LoginComponent() {
                           id="typePasswordX"
                           className="form-control form-control-lg"
                           placeholder="Enter your password"
-                          required
+                          // required
                           value={formData.password}
                           onChange={(e) =>
                             setFormData({

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Sidebar from "./sidebar";
 import Navbar from "./navbar";
 import axios from "axios";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { Button, IconButton, Typography } from "@mui/material";
+import { IconButton, Typography } from "@mui/material";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -105,7 +105,8 @@ function LeadData() {
                                     },
                                   }
                                 );
-                                navigate("/leaddata");
+
+                                window.location.reload();
                               }}
                             >
                               <DeleteIcon />

@@ -1,6 +1,14 @@
 import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
-import { Typography, Button, Box } from "@mui/material";
+import {
+  Typography,
+  Button,
+  Box,
+  MenuItem,
+  FormControl,
+  InputLabel,
+  Select,
+} from "@mui/material";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Navbar from "./navbar";
@@ -18,24 +26,61 @@ function AddLead() {
     status: "",
     created: "",
     owner: "",
+    error: {
+      fullname: "",
+      title: "",
+      company: "",
+      phone: "",
+      email: "",
+      status: "",
+      created: "",
+      owner: "",
+    },
   });
 
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      const response = await axios.post(
-        `https://crm-node-app.herokuapp.com/lead/create/`,
-        { lead: { ...formData } },
-        { headers: { accesstoken: localStorage.getItem("token") } }
-      );
-      console.log(response);
-      setTimeout(() => {
-        navigate("/leaddata");
-      }, 1000);
+      const errKeys = Object.keys(formData).filter((key) => {
+        if (formData[key] === "" && key !== "id" && key !== "error") {
+          return key;
+        }
+      });
+      if (errKeys.length >= 1) {
+        alert("Please fill all Data");
+      } else if (
+        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(formData.email)
+      ) {
+        alert("Please Enter a Valid Email Address");
+      } else {
+        const response = await axios.post(
+          `https://crm-node-app.herokuapp.com/lead/create/`,
+          { lead: { ...formData } },
+          { headers: { accesstoken: localStorage.getItem("token") } }
+        );
+        console.log(response);
+        setTimeout(() => {
+          navigate("/leaddata");
+        }, 1000);
+        if (response.status == 200) {
+          alert("Lead Data Created sucessfully");
+        }
+      }
     } catch (error) {
       console.log(error);
     }
   };
+  //handlesubmit
+  const handleChange = (e) => {
+    let error = { ...formData.error };
+    if (e.target.value === "") {
+      error[e.target.name] = `${e.target.name} is Required`;
+    } else {
+      error[e.target.name] = "";
+    }
+    setFormData({ ...formData, [e.target.name]: e.target.value, error });
+  };
+  ////
 
   return (
     <>
@@ -52,7 +97,7 @@ function AddLead() {
               <div className="add-user">
                 <div style={{ display: "flex" }}>
                   <div
-                    className="product col-md-3 col-lg-4"
+                    className="product col-md-4 col-lg-6 offset-md-3"
                     style={{
                       justifyContent: "center",
                       padding: "30px",
@@ -70,105 +115,126 @@ function AddLead() {
                     >
                       Add services
                     </Typography>
+
                     <br />
                     <form onSubmit={handleSubmit}>
                       <div>
                         <TextField
+                          fullWidth
                           value={formData.fullname}
-                          onChange={(e) =>
-                            setFormData({
-                              ...formData,
-                              fullname: e.target.value,
-                            })
-                          }
+                          onChange={(e) => handleChange(e)}
                           label="Name"
-                          variant="standard"
+                          variant="outlined"
                           name="fullname"
-                          required
                         />
                         <br />
+                        <span style={{ color: "red" }}>
+                          {formData.error.fullname}
+                        </span>
+                        <br />
                         <TextField
+                          fullWidth
                           value={formData.title}
-                          onChange={(e) =>
-                            setFormData({ ...formData, title: e.target.value })
-                          }
+                          onChange={(e) => handleChange(e)}
                           label="Title"
-                          variant="standard"
+                          variant="outlined"
                           name="title"
-                          required
                         />
                         <br />
+                        <span style={{ color: "red" }}>
+                          {formData.error.title}
+                        </span>
+                        <br />
                         <TextField
+                          fullWidth
                           value={formData.company}
-                          onChange={(e) =>
-                            setFormData({
-                              ...formData,
-                              company: e.target.value,
-                            })
-                          }
+                          onChange={(e) => handleChange(e)}
                           label="Company"
-                          variant="standard"
+                          variant="outlined"
                           name="company"
-                          required
                         />
                         <br />
+                        <span style={{ color: "red" }}>
+                          {formData.error.company}
+                        </span>
+                        <br />
                         <TextField
+                          fullWidth
                           value={formData.phone}
-                          onChange={(e) =>
-                            setFormData({ ...formData, phone: e.target.value })
-                          }
+                          onChange={(e) => handleChange(e)}
                           label="Phone Number"
-                          variant="standard"
+                          variant="outlined"
                           name="phone"
-                          required
                         />
                         <br />
+                        <span style={{ color: "red" }}>
+                          {formData.error.phone}
+                        </span>
+                        <br />
                         <TextField
+                          fullWidth
                           value={formData.email}
-                          onChange={(e) =>
-                            setFormData({ ...formData, email: e.target.value })
-                          }
+                          onChange={(e) => handleChange(e)}
                           label="Email"
-                          variant="standard"
+                          variant="outlined"
                           name="email"
-                          required
                         />
                         <br />
-                        <TextField
-                          value={formData.status}
-                          onChange={(e) =>
-                            setFormData({ ...formData, status: e.target.value })
-                          }
-                          label="Status"
-                          variant="standard"
-                          name="status"
-                          required
-                        />
+                        <span style={{ color: "red" }}>
+                          {formData.error.email}
+                        </span>
+                        <br />
+                        <FormControl fullWidth>
+                          <InputLabel id="demo-simple-select-label">
+                            Status
+                          </InputLabel>
+                          <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={formData.status}
+                            label="Status"
+                            name="status"
+                            onChange={(e) => handleChange(e)}
+                          >
+                            <MenuItem value="New">New</MenuItem>
+                            <MenuItem value="Contacted">Contacted</MenuItem>
+                            <MenuItem value="Qualified">Qualified</MenuItem>
+                            <MenuItem value="Lost">Lost</MenuItem>
+                            <MenuItem value="Canceled">Canceled</MenuItem>
+                            <MenuItem value="Confirmed">Confirmed</MenuItem>
+                          </Select>
+                        </FormControl>
+                        <br />
+                        <span style={{ color: "red" }}>
+                          {formData.error.status}
+                        </span>
                         <br />
                         <TextField
+                          fullWidth
                           value={formData.created}
-                          onChange={(e) =>
-                            setFormData({
-                              ...formData,
-                              created: e.target.value,
-                            })
-                          }
+                          onChange={(e) => handleChange(e)}
                           label="Created Date"
-                          variant="standard"
+                          variant="outlined"
                           name="created"
-                          required
                         />
+                        <br />{" "}
+                        <span style={{ color: "red" }}>
+                          {formData.error.created}
+                        </span>{" "}
                         <br />
                         <TextField
+                          fullWidth
                           value={formData.owner}
-                          onChange={(e) =>
-                            setFormData({ ...formData, owner: e.target.value })
-                          }
+                          onChange={(e) => handleChange(e)}
                           label="Owner"
-                          variant="standard"
+                          variant="outlined"
                           name="owner"
-                          required
                         />
+                        <br />
+                        <span style={{ color: "red" }}>
+                          {formData.error.owner}
+                        </span>
+                        <br />
                         <br />
                         <Button
                           style={{
