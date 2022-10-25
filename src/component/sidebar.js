@@ -153,7 +153,7 @@ export default function Sidebar() {
 
         {/* <!-- Nav Item - Charts --> */}
         <li className="nav-item">
-          <Link className="nav-link" to="/chart">
+          <Link className="nav-link">
             <i className="fas fa-fw fa-chart-area"></i>
 
             <span>Charts</span>
@@ -162,7 +162,7 @@ export default function Sidebar() {
 
         {/* <!-- Nav Item - Tables --> */}
         <li className="nav-item">
-          <Link className="nav-link" to="/Table">
+          <Link className="nav-link">
             <i className="fas fa-fw fa-table"></i>
 
             <span>Tables</span>

@@ -280,7 +280,7 @@ export default function Navbar() {
               <div className="dropdown-divider"></div>
               <Link
                 className="dropdown-item"
-                to="/login"
+                to="/"
                 data-toggle="modal"
                 data-target="#logoutModal"
               >
