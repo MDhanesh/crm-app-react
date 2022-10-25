@@ -66,7 +66,7 @@ export default function Sidebar() {
               id="collapseTwo"
             >
               <h6 className="collapse-header">Custom Components:</h6>
-              <Link className="collapse-item" to="/button">
+              <Link className="collapse-item" to="/services">
                 Buttons
               </Link>
               <Link className="collapse-item" to="/cards">
