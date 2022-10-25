@@ -10,11 +10,12 @@ function AddServices() {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    companyname: "",
+    fullname: "",
+    title: "",
+    company: "",
+    phone: "",
+    email: "",
     servicetype: "",
-    users: "",
-    status: "",
-    type: "",
   });
 
   const handleSubmit = async (e) => {
@@ -70,36 +71,68 @@ function AddServices() {
                   <form onSubmit={handleSubmit}>
                     <div>
                       <TextField
-                        className="textfield"
-                        sx={{
-                          width: 300,
-                        }}
-                        id="standard-basic"
-                        label="servicestype"
-                        required
-                        variant="standard"
-                        name="name"
-                        value={formData.serviceneed}
+                        value={formData.fullname}
                         onChange={(e) =>
                           setFormData({
                             ...formData,
-                            companyname: e.target.value,
+                            fullname: e.target.value,
                           })
                         }
-                      />
-                    </div>
-                    <br />
-                    <div>
-                      <TextField
-                        className="textfield"
-                        sx={{
-                          width: 300,
-                        }}
-                        id="standard-basic"
-                        label="Product Name"
-                        required
+                        label="Name"
                         variant="standard"
-                        name="servicetype"
+                        name="fullname"
+                        required
+                      />
+                      <br />
+                      <TextField
+                        value={formData.title}
+                        onChange={(e) =>
+                          setFormData({ ...formData, title: e.target.value })
+                        }
+                        label="Title"
+                        variant="standard"
+                        name="title"
+                        required
+                      />
+                      <br />
+                      <TextField
+                        value={formData.company}
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            company: e.target.value,
+                          })
+                        }
+                        label="Company"
+                        variant="standard"
+                        name="company"
+                        required
+                      />
+                      <br />
+                      <TextField
+                        value={formData.phone}
+                        onChange={(e) =>
+                          setFormData({ ...formData, phone: e.target.value })
+                        }
+                        label="Phone Number"
+                        variant="standard"
+                        name="phone"
+                        required
+                      />
+                      <br />
+                      <TextField
+                        value={formData.email}
+                        onChange={(e) =>
+                          setFormData({ ...formData, email: e.target.value })
+                        }
+                        label="Email"
+                        variant="standard"
+                        name="email"
+                        required
+                      />
+                      <br />
+
+                      <TextField
                         value={formData.servicetype}
                         onChange={(e) =>
                           setFormData({
@@ -107,65 +140,12 @@ function AddServices() {
                             servicetype: e.target.value,
                           })
                         }
-                      />
-                    </div>
-                    <br />
-                    <div>
-                      <TextField
-                        className="textfield"
-                        sx={{
-                          width: 300,
-                        }}
-                        id="standard-basic"
-                        label="Product users"
-                        required
+                        label="Service Type"
                         variant="standard"
-                        type="text"
-                        name="users"
-                        value={formData.users}
-                        onChange={(e) =>
-                          setFormData({ ...formData, users: e.target.value })
-                        }
-                      />
-                    </div>
-                    <br />
-                    <div>
-                      <TextField
-                        className="textfield"
-                        sx={{
-                          width: 300,
-                        }}
-                        id="standard-basic"
-                        label="Quantity"
-                        variant="standard"
+                        name="status"
                         required
-                        type="number"
-                        name="confirmpassword"
-                        value={formData.quantity}
-                        onChange={(e) =>
-                          setFormData({ ...formData, status: e.target.value })
-                        }
                       />
-                    </div>
-                    <br />
-                    <div>
-                      <select
-                        style={{ width: "300px" }}
-                        class="form-select"
-                        aria-label="Default select example"
-                        value={formData.type}
-                        onChange={(e) =>
-                          setFormData({ ...formData, type: e.target.value })
-                        }
-                      >
-                        <option selected>Select Type</option>
-                        <option value="camera">Camera</option>
-                        <option value="lens">Lens</option>
-                        <option value="light">Light</option>
-                      </select>
-                    </div>
-                    <br />
-                    <div>
+                      <br />
                       <Button
                         style={{
                           width: "120px",
@@ -173,9 +153,12 @@ function AddServices() {
                         variant="contained"
                         type="submit"
                       >
-                        Request Services
+                        Add Lead
                       </Button>
                     </div>
+                    <br />
+
+                    <br />
                   </form>
                 </div>
               </div>

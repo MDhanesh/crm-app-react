@@ -66,7 +66,7 @@ function ServicesData() {
                   <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
                       <TableRow>
-                        <TableCell>Customer Name</TableCell>
+                        <TableCell>Services</TableCell>
                         <TableCell>Phone</TableCell>
                         <TableCell>Email</TableCell>
                         <TableCell>Address</TableCell>
@@ -83,14 +83,14 @@ function ServicesData() {
                             "&:last-child td, &:last-child th": { border: 0 },
                           }}
                         >
-                          <TableCell>{row.name}</TableCell>
-                          <TableCell>{row.phone}</TableCell>
+                          <TableCell>{row.fullname}</TableCell>
+                          <TableCell>{row.title}</TableCell>
 
-                          <TableCell>{row.email}</TableCell>
-
-                          <TableCell>{row.address}</TableCell>
                           <TableCell>{row.company}</TableCell>
-                          <TableCell>{row.status}</TableCell>
+
+                          <TableCell>{row.phone}</TableCell>
+                          <TableCell>{row.email}</TableCell>
+                          <TableCell>{row.servicetype}</TableCell>
 
                           <TableCell>
                             <IconButton color="secondary">
@@ -100,7 +100,7 @@ function ServicesData() {
                               color="error"
                               onClick={async () => {
                                 const response = await axios.delete(
-                                  `https://crm-node-app.herokuapp.com/service/delete/${row._id}`,
+                                  `https://crm-node-app.herokuapp.com/services/delete/${row._id}`,
                                   {
                                     headers: {
                                       accesstoken:
@@ -108,7 +108,7 @@ function ServicesData() {
                                     },
                                   }
                                 );
-                                navigate("/servicedata");
+                                navigate("/servicesdata");
                               }}
                             >
                               <DeleteIcon />

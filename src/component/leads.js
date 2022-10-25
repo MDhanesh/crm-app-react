@@ -183,7 +183,6 @@ function AddLead() {
                       <br />
 
                       <br />
-                      <div></div>
                     </form>
                   </div>
                 </div>
