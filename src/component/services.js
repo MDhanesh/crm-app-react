@@ -82,7 +82,7 @@ const AddServices = () => {
             },
           })
             .then((data) => data.json())
-            .then(() => navigate("/customers"));
+            .then(() => navigate("/dashboard"));
         }}
         variant="contained"
       >
