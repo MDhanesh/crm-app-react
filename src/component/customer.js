@@ -6,31 +6,30 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "./navbar";
 import Sidebar from "./sidebar";
 
-function AddLead() {
+export default function AddCustomer() {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    fullname: "",
-    title: "",
-    company: "",
+    name: "",
+
     phone: "",
     email: "",
+    address: "",
+    company: "",
     status: "",
-    created: "",
-    owner: "",
   });
 
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
       const response = await axios.post(
-        `https://crm-node-app.herokuapp.com/lead/create/`,
-        { lead: { ...formData } },
+        `https://crm-node-app.herokuapp.com/contact/create/`,
+        { contact: { ...formData } },
         { headers: { accesstoken: localStorage.getItem("token") } }
       );
       console.log(response);
       setTimeout(() => {
-        navigate("/leaddata");
+        navigate("/customerdata");
       }, 1000);
     } catch (error) {
       console.log(error);
@@ -68,33 +67,61 @@ function AddLead() {
                         fontWeight: "bolder",
                       }}
                     >
-                      Add services
+                      Add Customer
                     </Typography>
                     <br />
                     <form onSubmit={handleSubmit}>
                       <div>
                         <TextField
-                          value={formData.fullname}
+                          value={formData.name}
                           onChange={(e) =>
                             setFormData({
                               ...formData,
-                              fullname: e.target.value,
+                              name: e.target.value,
                             })
                           }
                           label="Name"
                           variant="standard"
-                          name="fullname"
+                          name="name"
                           required
                         />
                         <br />
                         <TextField
-                          value={formData.title}
+                          value={formData.phone}
                           onChange={(e) =>
-                            setFormData({ ...formData, title: e.target.value })
+                            setFormData({ ...formData, phone: e.target.value })
                           }
-                          label="Title"
+                          label="Phone"
                           variant="standard"
-                          name="title"
+                          name="phone"
+                          required
+                        />
+                        <br />
+                        <TextField
+                          value={formData.email}
+                          onChange={(e) =>
+                            setFormData({
+                              ...formData,
+                              email: e.target.value,
+                            })
+                          }
+                          label="Email"
+                          variant="standard"
+                          name="email"
+                          required
+                        />
+                        <br />
+                        <TextField
+                          value={formData.address}
+                          onChange={(e) =>
+                            setFormData({
+                              ...formData,
+                              address: e.target.value,
+                            })
+                          }
+                          label="Address"
+                          variant="standard"
+                          name="address"
                           required
                         />
                         <br />
@@ -106,31 +133,9 @@ function AddLead() {
                               company: e.target.value,
                             })
                           }
-                          label="Company"
+                          label="company"
                           variant="standard"
                           name="company"
-                          required
-                        />
-                        <br />
-                        <TextField
-                          value={formData.phone}
-                          onChange={(e) =>
-                            setFormData({ ...formData, phone: e.target.value })
-                          }
-                          label="Phone Number"
-                          variant="standard"
-                          name="phone"
-                          required
-                        />
-                        <br />
-                        <TextField
-                          value={formData.email}
-                          onChange={(e) =>
-                            setFormData({ ...formData, email: e.target.value })
-                          }
-                          label="Email"
-                          variant="standard"
-                          name="email"
                           required
                         />
                         <br />
@@ -145,31 +150,7 @@ function AddLead() {
                           required
                         />
                         <br />
-                        <TextField
-                          value={formData.created}
-                          onChange={(e) =>
-                            setFormData({
-                              ...formData,
-                              created: e.target.value,
-                            })
-                          }
-                          label="Created Date"
-                          variant="standard"
-                          name="created"
-                          required
-                        />
-                        <br />
-                        <TextField
-                          value={formData.owner}
-                          onChange={(e) =>
-                            setFormData({ ...formData, owner: e.target.value })
-                          }
-                          label="Owner"
-                          variant="standard"
-                          name="owner"
-                          required
-                        />
-                        <br />
+
                         <Button
                           style={{
                             width: "120px",
@@ -177,7 +158,7 @@ function AddLead() {
                           variant="contained"
                           type="submit"
                         >
-                          Add Lead
+                          Add Customer
                         </Button>
                       </div>
                       <br />
@@ -195,4 +176,3 @@ function AddLead() {
     </>
   );
 }
-export default AddLead;

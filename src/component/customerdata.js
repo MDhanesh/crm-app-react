@@ -3,40 +3,35 @@ import { useNavigate, useParams } from "react-router-dom";
 import Sidebar from "./sidebar";
 import Navbar from "./navbar";
 import axios from "axios";
-
-import Typography from "@mui/material/Typography";
-
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import {
-  IconButton,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-} from "@mui/material";
+import { Button, IconButton, Typography } from "@mui/material";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
 
-function ServicesData() {
-  const [services, setServices] = useState([]);
+export default function CustomerData() {
+  const [customer, setLead] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    async function getservicess() {
+    async function getleads() {
       const response = await axios.get(
-        `https://crm-node-app.herokuapp.com/services/get`,
+        `https://crm-node-app.herokuapp.com/contact/get/`,
         {
           headers: {
             accesstoken: localStorage.getItem("token"),
           },
         }
       );
-      setServices(response.data);
+      setLead(response.data);
     }
 
-    getservicess();
+    getleads();
   }, []);
 
   return (
@@ -60,7 +55,7 @@ function ServicesData() {
                     fontWeight: "bolder",
                   }}
                 >
-                  SERVICES DATA
+                  CUSTOMERS DATA
                 </Typography>
                 <TableContainer component={Paper}>
                   <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -76,7 +71,7 @@ function ServicesData() {
                       </TableRow>
                     </TableHead>
                     <TableBody>
-                      {services.map((row) => (
+                      {customer.map((row) => (
                         <TableRow
                           key={row._id}
                           sx={{
@@ -100,7 +95,7 @@ function ServicesData() {
                               color="error"
                               onClick={async () => {
                                 const response = await axios.delete(
-                                  `https://crm-node-app.herokuapp.com/service/delete/${row._id}`,
+                                  `https://crm-node-app.herokuapp.com/contact/delete/${row._id}`,
                                   {
                                     headers: {
                                       accesstoken:
@@ -108,7 +103,7 @@ function ServicesData() {
                                     },
                                   }
                                 );
-                                navigate("/servicedata");
+                                navigate("/customerdata");
                               }}
                             >
                               <DeleteIcon />
@@ -127,5 +122,3 @@ function ServicesData() {
     </>
   );
 }
-
-export default ServicesData;

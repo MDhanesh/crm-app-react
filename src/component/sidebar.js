@@ -50,8 +50,8 @@ export default function Sidebar() {
             aria-expanded="true"
             aria-controls="collapseTwo"
           >
-            <i className="fas fa-fw fa-cog"></i>
-            <span>Components</span>
+            <i className="fas fa-users"></i>
+            <span>Customers</span>
           </a>
           <div
             id="collapseTwo"
@@ -64,11 +64,11 @@ export default function Sidebar() {
               id="collapseTwo"
             >
               <h6 className="collapse-header">Customer:</h6>
-              <Link className="collapse-item" to="/services">
-                Services
+              <Link className="collapse-item" to="/customer">
+                Add Customers
               </Link>
-              <Link className="collapse-item" to="/servicesdata">
-                Services List
+              <Link className="collapse-item" to="/customerdata">
+                Customer List
               </Link>
             </div>
           </div>
@@ -113,7 +113,7 @@ export default function Sidebar() {
         <hr className="sidebar-divider" />
 
         {/* <!-- Heading --> */}
-        <div className="sidebar-heading">Addons</div>
+        <div className="sidebar-heading">Add services</div>
 
         {/* <!-- Nav Item - Pages Collapse Menu --> */}
         <li className="nav-item">
@@ -126,8 +126,8 @@ export default function Sidebar() {
             aria-expanded="true"
             aria-controls="collapsePages"
           >
-            <i className="fas fa-fw fa-folder"></i>
-            <span>Pages</span>
+            <i className="fas fa-cog"></i>
+            <span>Services</span>
           </a>
           <div
             id="collapsePages"
@@ -139,26 +139,13 @@ export default function Sidebar() {
               className="bg-white py-2 collapse-inner rounded"
               id="collapsePages"
             >
-              <h6 className="collapse-header">Login Screens:</h6>
-              <Link className="collapse-item" to="/login">
-                Login
+              <h6 className="collapse-header"></h6>
+              <Link className="collapse-item" to="/services">
+                Request services
               </Link>
 
-              <Link className="collapse-item" to="/register">
-                Register
-              </Link>
-
-              <Link className="collapse-item" to="/forgot">
-                Forgot password
-              </Link>
-
-              <div className="collapse-divider"></div>
-              <h6 className="collapse-header">Other Pages:</h6>
-              <Link className="collapse-item" to="/error">
-                404 Page
-              </Link>
-              <Link className="collapse-item" to="/blank">
-                Blank Page
+              <Link className="collapse-item" to="/servicesdata">
+                services List
               </Link>
             </div>
           </div>
@@ -184,33 +171,6 @@ export default function Sidebar() {
 
         {/* <!-- Divider --> */}
         <hr className="sidebar-divider d-none d-md-block" />
-
-        {/* <!-- Sidebar Toggler (Sidebar) --> */}
-        <div className="text-center d-none d-md-inline">
-          <button
-            className="rounded-circle border-0 "
-            id="sidebarToggle"
-          ></button>
-        </div>
-
-        {/* <!-- Sidebar Message --> */}
-        <div className="sidebar-card d-none d-lg-flex">
-          <img
-            className="sidebar-card-illustration mb-2"
-            src={undraw_rocket}
-            alt="..."
-          />
-          <p className="text-center mb-2">
-            <strong>SB Admin Pro</strong> is packed with premium features,
-            components, and more!
-          </p>
-          <a
-            className="btn btn-success btn-sm"
-            href="https://startbootstrap.com/theme/sb-admin-pro"
-          >
-            Upgrade to Pro!
-          </a>
-        </div>
       </ul>
     </>
   );

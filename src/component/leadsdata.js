@@ -5,7 +5,14 @@ import Navbar from "./navbar";
 import axios from "axios";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { IconButton } from "@mui/material";
+import { Button, IconButton, Typography } from "@mui/material";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
 
 function LeadData() {
   const [lead, setLead] = useState([]);
@@ -14,7 +21,7 @@ function LeadData() {
   useEffect(() => {
     async function getleads() {
       const response = await axios.get(
-        `https://crm-node-app.herokuapp.com/lead/get`,
+        `https://crm-node-app.herokuapp.com/lead/get/`,
         {
           headers: {
             accesstoken: localStorage.getItem("token"),
@@ -26,12 +33,6 @@ function LeadData() {
 
     getleads();
   }, []);
-
-  const [name, setName] = useState(lead.name);
-  const [mobile, setMobile] = useState(lead.mobile);
-  const [email, setEmail] = useState(lead.email);
-  const [address, setAddress] = useState(lead.address);
-  const [type, setType] = useState(lead.type);
 
   return (
     <>
@@ -46,45 +47,75 @@ function LeadData() {
               {/* <!-- Topbar --> */}
               <Navbar />
               <div>
-                <table className="table table-striped">
-                  <thead>
-                    <tr>
-                      <th scope="col">Lead Name</th>
-                      <th scope="col">Title</th>
-                      <th scope="col">Company</th>
-                      <th scope="col">Phone</th>
-                      <th scope="col">Email Address</th>
-                      <th scope="col">Lead Status</th>
-                      <th scope="col">Lead Created</th>
-                      <th scope="col">Lead Owner</th>
-                      <th scope="col">Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {lead.map((lead) => {
-                      return (
-                        <tr>
-                          <td>{lead.fullname}</td>
-                          <td>{lead.title}</td>
-                          <td>{lead.company}</td>
-                          <td>{lead.phone}</td>
-                          <td>{lead.email}</td>
-                          <td>{lead.status}</td>
-                          <td>{lead.created}</td>
-                          <td>{lead.owner}</td>
-                          <td>
-                            <IconButton onClick="" color="secondary">
+                <Typography
+                  variant="h4"
+                  style={{
+                    fontSize: "30px",
+                    color: "black",
+                    fontWeight: "bolder",
+                  }}
+                >
+                  LEADS DATA
+                </Typography>
+                <TableContainer component={Paper}>
+                  <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                    <TableHead>
+                      <TableRow>
+                        <TableCell>Lead Name</TableCell>
+                        <TableCell>Title</TableCell>
+                        <TableCell>Company</TableCell>
+
+                        <TableCell>Email</TableCell>
+                        <TableCell>Phone</TableCell>
+                        <TableCell>Status</TableCell>
+                        <TableCell>Created</TableCell>
+                        <TableCell>Owner</TableCell>
+                        <TableCell>Actions</TableCell>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {lead.map((row) => (
+                        <TableRow
+                          key={row._id}
+                          sx={{
+                            "&:last-child td, &:last-child th": { border: 0 },
+                          }}
+                        >
+                          <TableCell>{row.fullname}</TableCell>
+                          <TableCell>{row.title}</TableCell>
+                          <TableCell>{row.company}</TableCell>
+                          <TableCell>{row.email}</TableCell>
+                          <TableCell>{row.phone}</TableCell>
+                          <TableCell>{row.status}</TableCell>
+                          <TableCell>{row.created}</TableCell>
+                          <TableCell>{row.owner}</TableCell>
+                          <TableCell>
+                            <IconButton color="secondary">
                               <EditIcon />
                             </IconButton>
-                            <IconButton onClick="" color="error">
+                            <IconButton
+                              color="error"
+                              onClick={async () => {
+                                const response = await axios.delete(
+                                  `https://crm-node-app.herokuapp.com/lead/delete/${row._id}`,
+                                  {
+                                    headers: {
+                                      accesstoken:
+                                        localStorage.getItem("token"),
+                                    },
+                                  }
+                                );
+                                navigate("/leaddata");
+                              }}
+                            >
                               <DeleteIcon />
                             </IconButton>
-                          </td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </TableContainer>
               </div>
             </div>
           </div>

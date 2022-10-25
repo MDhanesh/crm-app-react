@@ -10,10 +10,10 @@ function AddServices() {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    serviceneed: "",
+    companyname: "",
     servicetype: "",
-    price: "",
-    quantity: "",
+    users: "",
+    status: "",
     type: "",
   });
 
@@ -28,7 +28,7 @@ function AddServices() {
       console.log(response);
       setTimeout(() => {
         navigate("/servicesdata");
-      }, 5000);
+      }, 1000);
     } catch (error) {
       console.log(error);
     }
@@ -64,7 +64,7 @@ function AddServices() {
                       fontWeight: "bolder",
                     }}
                   >
-                    Add Product
+                    Add services
                   </Typography>
 
                   <form onSubmit={handleSubmit}>
@@ -83,7 +83,7 @@ function AddServices() {
                         onChange={(e) =>
                           setFormData({
                             ...formData,
-                            serviceneed: e.target.value,
+                            companyname: e.target.value,
                           })
                         }
                       />
@@ -117,14 +117,14 @@ function AddServices() {
                           width: 300,
                         }}
                         id="standard-basic"
-                        label="Product Price"
+                        label="Product users"
                         required
                         variant="standard"
                         type="text"
-                        name="price"
-                        value={formData.price}
+                        name="users"
+                        value={formData.users}
                         onChange={(e) =>
-                          setFormData({ ...formData, price: e.target.value })
+                          setFormData({ ...formData, users: e.target.value })
                         }
                       />
                     </div>
@@ -143,7 +143,7 @@ function AddServices() {
                         name="confirmpassword"
                         value={formData.quantity}
                         onChange={(e) =>
-                          setFormData({ ...formData, quantity: e.target.value })
+                          setFormData({ ...formData, status: e.target.value })
                         }
                       />
                     </div>

@@ -10,6 +10,8 @@ import ServicesData from "./component/servicesdata";
 import Dashboard from "./component/dashboard";
 import AddLead from "./component/leads";
 import LeadData from "./component/leadsdata";
+import AddCustomer from "./component/customer";
+import CustomerData from "./component/customerdata";
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
           <Route path="/servicesdata" element={<ServicesData />} />
           <Route path="/lead" element={<AddLead />} />
           <Route path="/leaddata" element={<LeadData />} />
+          <Route path="/customer" element={<AddCustomer />} />
+          <Route path="/customerdata" element={<CustomerData />} />
         </Routes>
       </BrowserRouter>
     </div>
