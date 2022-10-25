@@ -3,22 +3,20 @@ import TextField from "@mui/material/TextField";
 import { Typography, Button } from "@mui/material";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-// import { ToastContainer, toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
-//import NavBar from "./NavBar";
-// import DeleteProduct from "./DeleteProduct";
-// import { env } from "./Config";
+import Navbar from "./navbar";
+import Sidebar from "./sidebar";
 
 function AddServices() {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    producturl: "",
-    productname: "",
+    serviceneed: "",
+    servicetype: "",
     price: "",
     quantity: "",
     type: "",
   });
+
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
@@ -27,177 +25,163 @@ function AddServices() {
         { services: { ...formData } },
         { headers: { accesstoken: localStorage.getItem("token") } }
       );
-      //   const notify = () =>
-      //     toast("Product Added Successfully", {
-      //       position: "top-right",
-      //       autoClose: 4000,
-      //     });
-      //   notify();
       console.log(response);
       setTimeout(() => {
-        navigate("/homepage");
+        navigate("/servicesdata");
       }, 5000);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const handlecancel = () => {
-    navigate("/homepage");
-  };
-
   return (
     <>
-      {/* <NavBar /> */}
-      <div style={{ display: "flex" }}>
-        <div
-          className="product col-md-3 col-lg-4"
-          style={{
-            justifyContent: "center",
-            padding: "30px",
-            backgroundColor: "white",
-            paddingLeft: "62px",
-          }}
-        >
-          <Typography
-            variant="h4"
-            style={{ fontSize: "30px", color: "black", fontWeight: "bolder" }}
-          >
-            Add Product
-          </Typography>
+      <div id="page-top">
+        {/* <!-- Page Wrapper --> */}
+        <div id="wrapper">
+          <Sidebar />
+          {/* <!-- Content Wrapper --> */}
+          <div id="content-wrapper" className="d-flex flex-column">
+            {/* <!-- Main Content --> */}
+            <div id="content">
+              {/* <!-- Topbar --> */}
+              <Navbar />
+              <div style={{ display: "flex" }}>
+                <div
+                  className="product col-md-3 col-lg-4"
+                  style={{
+                    justifyContent: "center",
+                    padding: "30px",
+                    backgroundColor: "white",
+                    paddingLeft: "62px",
+                  }}
+                >
+                  <Typography
+                    variant="h4"
+                    style={{
+                      fontSize: "30px",
+                      color: "black",
+                      fontWeight: "bolder",
+                    }}
+                  >
+                    Add Product
+                  </Typography>
 
-          <form onSubmit={handleSubmit}>
-            <div>
-              <TextField
-                className="textfield"
-                sx={{
-                  width: 300,
-                }}
-                id="standard-basic"
-                label="ProductUrl"
-                required
-                variant="standard"
-                name="name"
-                value={formData.producturl}
-                onChange={(e) =>
-                  setFormData({ ...formData, producturl: e.target.value })
-                }
-              />
+                  <form onSubmit={handleSubmit}>
+                    <div>
+                      <TextField
+                        className="textfield"
+                        sx={{
+                          width: 300,
+                        }}
+                        id="standard-basic"
+                        label="servicestype"
+                        required
+                        variant="standard"
+                        name="name"
+                        value={formData.serviceneed}
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            serviceneed: e.target.value,
+                          })
+                        }
+                      />
+                    </div>
+                    <br />
+                    <div>
+                      <TextField
+                        className="textfield"
+                        sx={{
+                          width: 300,
+                        }}
+                        id="standard-basic"
+                        label="Product Name"
+                        required
+                        variant="standard"
+                        name="servicetype"
+                        value={formData.servicetype}
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            servicetype: e.target.value,
+                          })
+                        }
+                      />
+                    </div>
+                    <br />
+                    <div>
+                      <TextField
+                        className="textfield"
+                        sx={{
+                          width: 300,
+                        }}
+                        id="standard-basic"
+                        label="Product Price"
+                        required
+                        variant="standard"
+                        type="text"
+                        name="price"
+                        value={formData.price}
+                        onChange={(e) =>
+                          setFormData({ ...formData, price: e.target.value })
+                        }
+                      />
+                    </div>
+                    <br />
+                    <div>
+                      <TextField
+                        className="textfield"
+                        sx={{
+                          width: 300,
+                        }}
+                        id="standard-basic"
+                        label="Quantity"
+                        variant="standard"
+                        required
+                        type="number"
+                        name="confirmpassword"
+                        value={formData.quantity}
+                        onChange={(e) =>
+                          setFormData({ ...formData, quantity: e.target.value })
+                        }
+                      />
+                    </div>
+                    <br />
+                    <div>
+                      <select
+                        style={{ width: "300px" }}
+                        class="form-select"
+                        aria-label="Default select example"
+                        value={formData.type}
+                        onChange={(e) =>
+                          setFormData({ ...formData, type: e.target.value })
+                        }
+                      >
+                        <option selected>Select Type</option>
+                        <option value="camera">Camera</option>
+                        <option value="lens">Lens</option>
+                        <option value="light">Light</option>
+                      </select>
+                    </div>
+                    <br />
+                    <div>
+                      <Button
+                        style={{
+                          width: "120px",
+                        }}
+                        variant="contained"
+                        type="submit"
+                      >
+                        Request Services
+                      </Button>
+                    </div>
+                  </form>
+                </div>
+              </div>
             </div>
-            <br />
-            <div>
-              <TextField
-                className="textfield"
-                sx={{
-                  width: 300,
-                }}
-                id="standard-basic"
-                label="Product Name"
-                required
-                variant="standard"
-                name="productname"
-                value={formData.productname}
-                onChange={(e) =>
-                  setFormData({ ...formData, productname: e.target.value })
-                }
-              />
-            </div>
-            <br />
-            <div>
-              <TextField
-                className="textfield"
-                sx={{
-                  width: 300,
-                }}
-                id="standard-basic"
-                label="Product Price"
-                required
-                variant="standard"
-                type="text"
-                name="price"
-                value={formData.price}
-                onChange={(e) =>
-                  setFormData({ ...formData, price: e.target.value })
-                }
-              />
-            </div>
-            <br />
-            <div>
-              <TextField
-                className="textfield"
-                sx={{
-                  width: 300,
-                }}
-                id="standard-basic"
-                label="Quantity"
-                variant="standard"
-                required
-                type="number"
-                name="confirmpassword"
-                value={formData.quantity}
-                onChange={(e) =>
-                  setFormData({ ...formData, quantity: e.target.value })
-                }
-              />
-            </div>
-            <br />
-            <div>
-              <select
-                style={{ width: "300px" }}
-                class="form-select"
-                aria-label="Default select example"
-                value={formData.type}
-                onChange={(e) =>
-                  setFormData({ ...formData, type: e.target.value })
-                }
-              >
-                <option selected>Select Type</option>
-                <option value="camera">Camera</option>
-                <option value="lens">Lens</option>
-                <option value="light">Light</option>
-              </select>
-            </div>
-            <br />
-            <div>
-              <Button
-                style={{
-                  width: "120px",
-                  marginRight: "53px",
-                }}
-                variant="contained"
-                onClick={handlecancel}
-              >
-                Back
-              </Button>
-              <Button
-                style={{
-                  width: "120px",
-                }}
-                variant="contained"
-                type="submit"
-              >
-                Add
-              </Button>
-              {/* <ToastContainer /> */}
-            </div>
-          </form>
+          </div>
         </div>
-        {/* <div className="col-lg-8" style={{ backgroundColor: "#99A3A4" }}>
-          <p
-            style={{
-              fontSize: "30px",
-              color: "black",
-              fontWeight: "bolder",
-              textAlign: "center",
-
-              backgroundColor: "skyblue",
-              padding: "15px",
-            }}
-          >
-            Delete Product
-          </p>
-          <DeleteProduct style={{ padding: "0px", margin: "0px" }} />
-        </div> */}
       </div>
     </>
   );

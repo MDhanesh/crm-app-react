@@ -16,11 +16,9 @@ export default function Sidebar() {
           to="/dashboard"
         >
           <div className="sidebar-brand-icon rotate-n-15">
-            <i className="fas fa-laugh-wink"></i>
+            <i className="fas fa-building"></i>
           </div>
-          <div className="sidebar-brand-text mx-3">
-            SB Admin <sup>2</sup>
-          </div>
+          <div className="sidebar-brand-text mx-3">CRM</div>
         </Link>
 
         {/* <!-- Divider --> */}
@@ -65,12 +63,12 @@ export default function Sidebar() {
               className="bg-white py-2 collapse-inner rounded"
               id="collapseTwo"
             >
-              <h6 className="collapse-header">Custom Components:</h6>
+              <h6 className="collapse-header">Customer:</h6>
               <Link className="collapse-item" to="/services">
-                Buttons
+                Services
               </Link>
-              <Link className="collapse-item" to="/cards">
-                Cards
+              <Link className="collapse-item" to="/servicesdata">
+                Services List
               </Link>
             </div>
           </div>
@@ -88,7 +86,7 @@ export default function Sidebar() {
             aria-controls="collapseUtilities"
           >
             <i className="fas fa-fw fa-wrench"></i>
-            <span>Utilities</span>
+            <span>Leads</span>
           </a>
           <div
             id="collapseUtilities"
@@ -100,19 +98,12 @@ export default function Sidebar() {
               className="bg-white py-2 collapse-inner rounded"
               id="collapseUtilities"
             >
-              <h6 className="collapse-header">Custom Utilities:</h6>
-              <Link className="collapse-item" to="/colors">
-                Colors
+              <h6 className="collapse-header">Custom Lead:</h6>
+              <Link className="collapse-item" to="/lead">
+                Add Lead
               </Link>
-              <Link className="collapse-item" to="/border">
-                Borders
-              </Link>
-              <Link className="collapse-item" to="/animations">
-                Animations
-              </Link>
-
-              <Link className="collapse-item" to="/other">
-                Other
+              <Link className="collapse-item" to="/leaddata">
+                Lead Data
               </Link>
             </div>
           </div>
