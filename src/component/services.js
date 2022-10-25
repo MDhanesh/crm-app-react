@@ -23,7 +23,7 @@ function AddServices() {
     try {
       e.preventDefault();
       const response = await axios.post(
-        `https://crm-node-app.herokuapp.com/contact/create/`,
+        `https://crm-node-app.herokuapp.com/services/create/`,
         { services: { ...formData } },
         { headers: { accesstoken: localStorage.getItem("token") } }
       );
