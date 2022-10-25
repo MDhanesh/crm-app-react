@@ -51,7 +51,7 @@ function Reset() {
       <nav className="navbar navbar-dark bg-dark  text-center">
         <div className="container">
           <h5 className="navbar-text fw-bold justify-content-center align-content-center ">
-            Customer Relationship Manager
+            Customer Relationship Management
           </h5>
         </div>
       </nav>
