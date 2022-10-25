@@ -66,12 +66,13 @@ function ServicesData() {
                   <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
                       <TableRow>
-                        <TableCell>Services</TableCell>
-                        <TableCell>Phone</TableCell>
+                        <TableCell>Name</TableCell>
+                        <TableCell>Services Type</TableCell>
+                        <TableCell>Phone</TableCell>{" "}
                         <TableCell>Email</TableCell>
-                        <TableCell>Address</TableCell>
                         <TableCell>Company</TableCell>
-                        <TableCell>Status</TableCell>
+                        <TableCell>Description</TableCell>
+                        <TableCell>Services Status</TableCell>
                         <TableCell>Actions</TableCell>
                       </TableRow>
                     </TableHead>
@@ -85,12 +86,12 @@ function ServicesData() {
                         >
                           <TableCell>{row.fullname}</TableCell>
                           <TableCell>{row.title}</TableCell>
-
-                          <TableCell>{row.company}</TableCell>
-
                           <TableCell>{row.phone}</TableCell>
                           <TableCell>{row.email}</TableCell>
+                          <TableCell>{row.company}</TableCell>
+
                           <TableCell>{row.servicetype}</TableCell>
+                          <TableCell>{row.status}</TableCell>
 
                           <TableCell>
                             <IconButton color="secondary">
@@ -108,7 +109,7 @@ function ServicesData() {
                                     },
                                   }
                                 );
-                                navigate("/servicesdata");
+                                window.location.reload();
                               }}
                             >
                               <DeleteIcon />

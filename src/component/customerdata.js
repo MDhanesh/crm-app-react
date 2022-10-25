@@ -66,7 +66,7 @@ export default function CustomerData() {
                         <TableCell>Email</TableCell>
                         <TableCell>Address</TableCell>
                         <TableCell>Company</TableCell>
-                        <TableCell>Status</TableCell>
+                        <TableCell>Country</TableCell>
                         <TableCell>Actions</TableCell>
                       </TableRow>
                     </TableHead>
@@ -85,7 +85,7 @@ export default function CustomerData() {
 
                           <TableCell>{row.address}</TableCell>
                           <TableCell>{row.company}</TableCell>
-                          <TableCell>{row.status}</TableCell>
+                          <TableCell>{row.country}</TableCell>
 
                           <TableCell>
                             <IconButton color="secondary">
@@ -103,7 +103,7 @@ export default function CustomerData() {
                                     },
                                   }
                                 );
-                                navigate("/customerdata");
+                                window.location.reload();
                               }}
                             >
                               <DeleteIcon />

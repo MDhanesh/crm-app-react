@@ -11,30 +11,61 @@ export default function AddCustomer() {
 
   const [formData, setFormData] = useState({
     name: "",
-
     phone: "",
     email: "",
     address: "",
     company: "",
-    status: "",
+    country: "",
+    error: {
+      name: "",
+      phone: "",
+      email: "",
+      address: "",
+      company: "",
+      country: "",
+    },
   });
 
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      const response = await axios.post(
-        `https://crm-node-app.herokuapp.com/contact/create/`,
-        { contact: { ...formData } },
-        { headers: { accesstoken: localStorage.getItem("token") } }
-      );
-      console.log(response);
-      setTimeout(() => {
-        navigate("/customerdata");
-      }, 1000);
+      const errKeys = Object.keys(formData).filter((key) => {
+        if (formData[key] === "" && key !== "id" && key !== "error") {
+          return key;
+        }
+      });
+      if (errKeys.length >= 1) {
+        alert("Please fill all Data");
+      } else if (
+        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(formData.email)
+      ) {
+        alert("Please Enter a Valid Email Address");
+      } else {
+        const response = await axios.post(
+          `https://crm-node-app.herokuapp.com/contact/create/`,
+          { contact: { ...formData } },
+          { headers: { accesstoken: localStorage.getItem("token") } }
+        );
+        console.log(response);
+        setTimeout(() => {
+          navigate("/customerdata");
+        }, 1000);
+      }
     } catch (error) {
       console.log(error);
     }
   };
+  //handlesubmit
+  const handleChange = (e) => {
+    let error = { ...formData.error };
+    if (e.target.value === "") {
+      error[e.target.name] = `${e.target.name} is Required`;
+    } else {
+      error[e.target.name] = "";
+    }
+    setFormData({ ...formData, [e.target.name]: e.target.value, error });
+  };
+  ////
 
   return (
     <>
@@ -48,10 +79,10 @@ export default function AddCustomer() {
             <div id="content">
               {/* <!-- Topbar --> */}
               <Navbar />
-              <div className="add-user">
+              <div className="add-user ">
                 <div style={{ display: "flex" }}>
                   <div
-                    className="product col-md-3 col-lg-4"
+                    className="product col-md-3 col-lg-6 offset-md-3"
                     style={{
                       justifyContent: "center",
                       padding: "30px",
@@ -73,84 +104,84 @@ export default function AddCustomer() {
                     <form onSubmit={handleSubmit}>
                       <div>
                         <TextField
+                          fullWidth
                           value={formData.name}
-                          onChange={(e) =>
-                            setFormData({
-                              ...formData,
-                              name: e.target.value,
-                            })
-                          }
+                          onChange={(e) => handleChange(e)}
                           label="Name"
                           variant="standard"
                           name="name"
-                          required
                         />
                         <br />
+                        <span style={{ color: "red" }}>
+                          {formData.error.name}
+                        </span>
+                        <br />
                         <TextField
+                          fullWidth
                           value={formData.phone}
-                          onChange={(e) =>
-                            setFormData({ ...formData, phone: e.target.value })
-                          }
+                          onChange={(e) => handleChange(e)}
                           label="Phone"
                           variant="standard"
                           name="phone"
-                          required
                         />
+
+                        <br />
+                        <span style={{ color: "red" }}>
+                          {formData.error.phone}
+                        </span>
                         <br />
                         <TextField
+                          fullWidth
                           value={formData.email}
-                          onChange={(e) =>
-                            setFormData({
-                              ...formData,
-                              email: e.target.value,
-                            })
-                          }
+                          onChange={(e) => handleChange(e)}
                           label="Email"
                           variant="standard"
                           name="email"
-                          required
                         />
                         <br />
+                        <span style={{ color: "red" }}>
+                          {formData.error.email}
+                        </span>
+                        <br />
                         <TextField
+                          fullWidth
                           value={formData.address}
-                          onChange={(e) =>
-                            setFormData({
-                              ...formData,
-                              address: e.target.value,
-                            })
-                          }
+                          onChange={(e) => handleChange(e)}
                           label="Address"
                           variant="standard"
                           name="address"
-                          required
                         />
                         <br />
+                        <span style={{ color: "red" }}>
+                          {formData.error.address}
+                        </span>
+                        <br />
                         <TextField
+                          fullWidth
                           value={formData.company}
-                          onChange={(e) =>
-                            setFormData({
-                              ...formData,
-                              company: e.target.value,
-                            })
-                          }
+                          onChange={(e) => handleChange(e)}
                           label="company"
                           variant="standard"
                           name="company"
-                          required
                         />
+                        <br />
+                        <span style={{ color: "red" }}>
+                          {formData.error.company}
+                        </span>
                         <br />
                         <TextField
-                          value={formData.status}
-                          onChange={(e) =>
-                            setFormData({ ...formData, status: e.target.value })
-                          }
-                          label="Status"
+                          fullWidth
+                          value={formData.country}
+                          onChange={(e) => handleChange(e)}
+                          label="country"
                           variant="standard"
-                          name="status"
-                          required
+                          name="country"
                         />
                         <br />
-
+                        <span style={{ color: "red" }}>
+                          {formData.error.country}
+                        </span>
+                        <br />
                         <Button
                           style={{
                             width: "120px",

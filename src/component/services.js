@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
-import { Typography, Button } from "@mui/material";
+import {
+  Typography,
+  Button,
+  MenuItem,
+  FormControl,
+  InputLabel,
+  Select,
+} from "@mui/material";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Navbar from "./navbar";
@@ -16,24 +23,58 @@ function AddServices() {
     phone: "",
     email: "",
     servicetype: "",
+    status: "",
+    error: {
+      fullname: "",
+      title: "",
+      company: "",
+      phone: "",
+      email: "",
+      servicetype: "",
+      status: "",
+    },
   });
 
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      const response = await axios.post(
-        `https://crm-node-app.herokuapp.com/services/create/`,
-        { services: { ...formData } },
-        { headers: { accesstoken: localStorage.getItem("token") } }
-      );
-      console.log(response);
-      setTimeout(() => {
-        navigate("/servicesdata");
-      }, 1000);
+      const errKeys = Object.keys(formData).filter((key) => {
+        if (formData[key] === "" && key !== "id" && key !== "error") {
+          return key;
+        }
+      });
+      if (errKeys.length >= 1) {
+        alert("Please fill all Data");
+      } else if (
+        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(formData.email)
+      ) {
+        alert("Please Enter a Valid Email Address");
+      } else {
+        const response = await axios.post(
+          `https://crm-node-app.herokuapp.com/services/create/`,
+          { services: { ...formData } },
+          { headers: { accesstoken: localStorage.getItem("token") } }
+        );
+        console.log(response);
+        setTimeout(() => {
+          navigate("/servicesdata");
+        }, 1000);
+      }
     } catch (error) {
       console.log(error);
     }
   };
+  //handlesubmit
+  const handleChange = (e) => {
+    let error = { ...formData.error };
+    if (e.target.value === "") {
+      error[e.target.name] = `${e.target.name} is Required`;
+    } else {
+      error[e.target.name] = "";
+    }
+    setFormData({ ...formData, [e.target.name]: e.target.value, error });
+  };
+  ////
 
   return (
     <>
@@ -49,7 +90,7 @@ function AddServices() {
               <Navbar />
               <div style={{ display: "flex" }}>
                 <div
-                  className="product col-md-3 col-lg-4"
+                  className="product col-md-3 col-lg-4  offset-md-3"
                   style={{
                     justifyContent: "center",
                     padding: "30px",
@@ -65,86 +106,117 @@ function AddServices() {
                       fontWeight: "bolder",
                     }}
                   >
-                    Add services
+                    Services Request
                   </Typography>
 
                   <form onSubmit={handleSubmit}>
                     <div>
                       <TextField
+                        fullWidth
                         value={formData.fullname}
-                        onChange={(e) =>
-                          setFormData({
-                            ...formData,
-                            fullname: e.target.value,
-                          })
-                        }
+                        onChange={(e) => handleChange(e)}
                         label="Name"
                         variant="standard"
                         name="fullname"
-                        required
                       />
                       <br />
+                      <span style={{ color: "red" }}>
+                        {formData.error.fullname}
+                      </span>
+                      <br />
                       <TextField
+                        fullWidth
                         value={formData.title}
-                        onChange={(e) =>
-                          setFormData({ ...formData, title: e.target.value })
-                        }
-                        label="Title"
+                        onChange={(e) => handleChange(e)}
+                        label="Service Type"
                         variant="standard"
                         name="title"
-                        required
                       />
                       <br />
+                      <span style={{ color: "red" }}>
+                        {formData.error.title}
+                      </span>
+                      <br />
                       <TextField
+                        fullWidth
                         value={formData.company}
-                        onChange={(e) =>
-                          setFormData({
-                            ...formData,
-                            company: e.target.value,
-                          })
-                        }
+                        onChange={(e) => handleChange(e)}
                         label="Company"
                         variant="standard"
                         name="company"
-                        required
                       />
                       <br />
+                      <span style={{ color: "red" }}>
+                        {formData.error.company}
+                      </span>
+                      <br />
                       <TextField
+                        fullWidth
                         value={formData.phone}
-                        onChange={(e) =>
-                          setFormData({ ...formData, phone: e.target.value })
-                        }
+                        onChange={(e) => handleChange(e)}
                         label="Phone Number"
                         variant="standard"
                         name="phone"
-                        required
                       />
                       <br />
+                      <span style={{ color: "red" }}>
+                        {formData.error.phone}
+                      </span>
+                      <br />
                       <TextField
+                        fullWidth
                         value={formData.email}
-                        onChange={(e) =>
-                          setFormData({ ...formData, email: e.target.value })
-                        }
+                        onChange={(e) => handleChange(e)}
                         label="Email"
                         variant="standard"
                         name="email"
-                        required
                       />
                       <br />
 
+                      <br />
+                      <span style={{ color: "red" }}>
+                        {formData.error.email}
+                      </span>
+                      <br />
                       <TextField
+                        fullWidth
                         value={formData.servicetype}
-                        onChange={(e) =>
-                          setFormData({
-                            ...formData,
-                            servicetype: e.target.value,
-                          })
-                        }
-                        label="Service Type"
+                        onChange={(e) => handleChange(e)}
+                        label="Description"
                         variant="standard"
-                        name="status"
-                        required
+                        name="servicetype"
                       />
+                      <br />
+
+                      <br />
+                      <span style={{ color: "red" }}>
+                        {formData.error.servicetype}
+                      </span>
+                      <br />
+                      <FormControl fullWidth>
+                        <InputLabel id="demo-simple-select-label">
+                          Status
+                        </InputLabel>
+                        <Select
+                          labelId="demo-simple-select-label"
+                          id="demo-simple-select"
+                          value={formData.status}
+                          label="Status"
+                          name="status"
+                          onChange={(e) => handleChange(e)}
+                        >
+                          <MenuItem value="Created">Created</MenuItem>
+                          <MenuItem value="Released">Released</MenuItem>
+                          <MenuItem value="Open">Open</MenuItem>
+                          <MenuItem value="Inprocess">Inprocess</MenuItem>
+                          <MenuItem value="Canceled">Canceled</MenuItem>
+                          <MenuItem value="Completed">Completed</MenuItem>
+                        </Select>
+                      </FormControl>
+                      <br />
+                      <span style={{ color: "red" }}>
+                        {formData.error.status}
+                      </span>
                       <br />
                       <Button
                         style={{
