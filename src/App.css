@@ -59,3 +59,11 @@
   );
 }
 /* ///////////////////////////signup //////////////////////// */
+@media (max-width: 650px) {
+  .sidebar .nav-item .collapse {
+    left: 0rem !important;
+    position: absolute !important;
+    top: 30px !important;
+    z-index: 1;
+  }
+}
