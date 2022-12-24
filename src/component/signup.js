@@ -103,7 +103,6 @@ export default function Login() {
           }
         );
         navigate("/home");
-        //console.log(response);
         if (response.data) {
           localStorage.setItem("token", response.data);
         }
