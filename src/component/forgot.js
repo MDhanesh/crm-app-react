@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
 
 export default function Forgot() {
   const [email, setUsername] = useState("");
   const handleSubmit = async (e) => {
     {
       const response = await axios.post(
-        "https://crm-node-app.herokuapp.com/register/forgot",
+        "http://localhost:4000/register/forgot",
         {
           email: email,
         }
@@ -27,10 +29,10 @@ export default function Forgot() {
 
   return (
     <>
-      <nav className="navbar navbar-dark bg-dark  text-center">
+      <nav className="navbar navbar-dark bg-dark  text-center ">
         <div className="container">
           <h5 className="navbar-text fw-bold justify-content-center align-content-center ">
-            Customer Relationship Manageent
+            Password
           </h5>
           <Link to="/">
             <button className="btn btn-primary" type="submit">
@@ -56,9 +58,7 @@ export default function Forgot() {
                   </div>
 
                   <div className="mb-3">
-                    <label for="email" className="form-label">
-                      Email
-                    </label>
+                    <label className="form-label">Email</label>
                     <input
                       type="email"
                       id="email"
