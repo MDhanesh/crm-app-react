@@ -49,45 +49,6 @@ export default function SignupComponent() {
           alert(" Account Created sucessfully");
         }
       }
-<<<<<<< HEAD
-    },
-  });
-  //signin formik
-  let FormikSignin = useFormik({
-    initialValues: {
-      email: "",
-      password: "",
-    },
-    validate: (values) => {
-      var errors = {};
-      if (values.email === "") errors.email = "Email is Required";
-      if (values.password === "") errors.password = "Password is Required";
-      return errors;
-    },
-    onSubmit: async (values) => {
-      try {
-        // console.log(values);
-        const response = await axios.post(
-          "http://localhost:4000/register/signin",
-          {
-            ...values,
-          }
-        );
-        navigate("/home");
-        if (response.data) {
-          localStorage.setItem("token", response.data);
-        }
-      } catch (error) {
-        console.log(error.response.data.msg);
-        Swal.fire({
-          title: "Wrong credentials",
-          icon: "error",
-          confirmButtonText: "okay",
-        });
-      }
-    },
-  });
-=======
     } catch (error) {
       console.log(error);
     }
@@ -103,7 +64,6 @@ export default function SignupComponent() {
     setFormData({ ...formData, [e.target.name]: e.target.value, error });
   };
   ////
->>>>>>> 668a8c86cc54d4f8e1aa5450abd8dcecb16399f3
   return (
     <>
       <nav className="navbar navbar-dark bg-dark  text-center">
