@@ -79,8 +79,8 @@ export default function SignupComponent() {
         </div>
       </nav>
 
-      <div className=" gradient-custom">
-        <section className=" bg-image ">
+      <div>
+        <section className=" bg-image vh-100  gradient-custom">
           <div className="mask d-flex align-items-center h-100 ">
             <div className="container h-100">
               <div className="row d-flex justify-content-center align-items-center h-100">
