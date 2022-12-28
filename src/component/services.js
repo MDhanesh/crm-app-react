@@ -51,7 +51,7 @@ function AddServices() {
         alert("Please Enter a Valid Email Address");
       } else {
         const response = await axios.post(
-          `https://crm-node-app.herokuapp.com/services/create/`,
+          `https://crmapp-g7w5.onrender.com/services/create/`,
           { services: { ...formData } },
           { headers: { accesstoken: localStorage.getItem("token") } }
         );

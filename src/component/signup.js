@@ -35,7 +35,7 @@ export default function SignupComponent() {
       } else {
         // console.log(formData);
         const response = await axios.post(
-          `https://crm-node-app.herokuapp.com/register/signup`,
+          `https://crmapp-g7w5.onrender.com/register/signup`,
           {
             ...formData,
           }

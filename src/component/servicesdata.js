@@ -26,7 +26,7 @@ function ServicesData() {
   useEffect(() => {
     async function getservicess() {
       const response = await axios.get(
-        `https://crm-node-app.herokuapp.com/services/get`,
+        `https://crmapp-g7w5.onrender.com/services/get`,
         {
           headers: {
             accesstoken: localStorage.getItem("token"),

@@ -42,7 +42,7 @@ export default function AddCustomer() {
         alert("Please Enter a Valid Email Address");
       } else {
         const response = await axios.post(
-          `https://crm-node-app.herokuapp.com/contact/create/`,
+          `https://crmapp-g7w5.onrender.com/contact/create/`,
           { contact: { ...formData } },
           { headers: { accesstoken: localStorage.getItem("token") } }
         );

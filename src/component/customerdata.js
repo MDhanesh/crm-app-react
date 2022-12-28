@@ -21,7 +21,7 @@ export default function CustomerData() {
   useEffect(() => {
     async function getleads() {
       const response = await axios.get(
-        `https://crm-node-app.herokuapp.com/contact/get/`,
+        `https://crmapp-g7w5.onrender.com/contact/get/`,
         {
           headers: {
             accesstoken: localStorage.getItem("token"),
@@ -95,7 +95,7 @@ export default function CustomerData() {
                               color="error"
                               onClick={async () => {
                                 const response = await axios.delete(
-                                  `https://crm-node-app.herokuapp.com/contact/delete/${row._id}`,
+                                  `https://crmapp-g7w5.onrender.com/contact/delete/${row._id}`,
                                   {
                                     headers: {
                                       accesstoken:

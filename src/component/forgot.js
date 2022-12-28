@@ -7,7 +7,7 @@ export default function Forgot() {
   const handleSubmit = async (e) => {
     {
       const response = await axios.post(
-        "https://crm-node-app.herokuapp.com/register/forgot",
+        "https://crmapp-g7w5.onrender.com/register/forgot",
         {
           email: email,
         }

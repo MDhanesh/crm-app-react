@@ -21,7 +21,7 @@ function LeadData() {
   useEffect(() => {
     async function getleads() {
       const response = await axios.get(
-        `https://crm-node-app.herokuapp.com/lead/get/`,
+        `https://crmapp-g7w5.onrender.com/lead/get/`,
         {
           headers: {
             accesstoken: localStorage.getItem("token"),
@@ -97,7 +97,7 @@ function LeadData() {
                               color="error"
                               onClick={async () => {
                                 const response = await axios.delete(
-                                  `https://crm-node-app.herokuapp.com/lead/delete/${row._id}`,
+                                  `https://crmapp-g7w5.onrender.com/lead/delete/${row._id}`,
                                   {
                                     headers: {
                                       accesstoken:

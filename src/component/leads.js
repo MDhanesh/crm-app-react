@@ -54,7 +54,7 @@ function AddLead() {
         alert("Please Enter a Valid Email Address");
       } else {
         const response = await axios.post(
-          `https://crm-node-app.herokuapp.com/lead/create/`,
+          `https://crmapp-g7w5.onrender.com/lead/create/`,
           { lead: { ...formData } },
           { headers: { accesstoken: localStorage.getItem("token") } }
         );
